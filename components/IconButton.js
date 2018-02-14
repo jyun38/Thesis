@@ -1,0 +1,51 @@
+import React, { Component } from 'react'
+import '../main.css'
+import CatList from './CatList.js'
+
+// import logo from '../brain.png'
+
+class IconButton extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			clickedDomain: null
+			// bgColor: '#82D8E5'
+		}
+		this.myClick = this.myClick.bind(this);
+		// console.log(this.props.name);
+	}
+
+	myClick() {
+		// this.props.onButtonClick();
+		this.props.sendDomain(this.props.name);
+
+		// this.setState({
+		// 	bgColor: '#ECF7F9'
+		// })
+		
+		// if(this.props.name == "Brain") {
+		// 	this.setState({
+		// 		brainActive: true
+		// 	})
+		// }
+	}
+	render() {
+		return (
+			<div>
+				<div>
+				 	<button className = "button" onClick={this.myClick}>
+				 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					 	<img style = {{width:40, height: 40}} src={require(`../${this.props.name.toLowerCase()}.png`)}/>
+					 	<font size="+2">
+					 	{this.props.name}
+					 	</font> 
+				 	</button> 
+				 </div>
+			</div>
+		)
+	}
+
+}
+
+export default IconButton
