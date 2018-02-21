@@ -69,56 +69,58 @@ class FeelingQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					Does the client show a pattern of irritable or angry mood?		      
+					<Radio q_ID = {"q_44"} txt = {"Yes"} name = "1" onAnswer = {this.setQ3Answer}/>
+		      <Radio q_ID = {"q_44"} txt = {"No"} name = "1" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_44"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ3Answer}/> 
+	      </div>
+	      <br/>
+				<div className = "questions">
 					The client experiences feelings of: (choose more than one if necessary)<br/>
-	        <Checkbox name = {"sadness, emptiness, distress, or hopelessness"}/>
-	        <Checkbox name = {"excitement, pleasure, or gratification"}/>
-	        <Checkbox name = {"fear"}/>
-	        <Checkbox name = {"recreational activities, such as participating in outdoor activities, watching movies, and listening to music"}/>
+					<Checkbox q_ID = {"q_45"}name = {"disinterest in activities or lack of empathy for others"}/>
+	        <Checkbox q_ID = {"q_46"} name = {"sadness, emptiness, distress, or hopelessness"}/>
+	        <Checkbox q_ID = {"q_47"} name = {"excitement, pleasure, or gratification"}/>
+	        <Checkbox q_ID = {"q_48"} name = {"fear"}/>
+	        <Checkbox q_ID = {"q_49"}name = {"nervousness, anxiety, stress, or frustration?"}/>
 	      </div>
 	      <br/>
 	      <div className = "questions">
 	      	Does the client experience mood instability? 
-	      	<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_50"} txt = {"Yes"} name = "3" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_50"} txt = {"No"} name = "3" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_50"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ2Answer}/> 
 	      </div>
 	      <br/>
-	      <div className = "questions">
-					Does the client show a patteren of irritable or angry mood?		      
-					<Radio txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
-	      </div>
-	      <br/>
+	      
 	      <div className = "questions">
 					Is the client excessively self-conscious? (E.g. worthlessness, guilt, gender incongruence)
-					<Radio txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-		      <Radio txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
+					<Radio q_ID = {"q_51"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
+		      <Radio q_ID = {"q_51"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
+		      <Radio q_ID = {"q_51"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client experience distress regarding gender identity? (E.g. preference for cross-dressing, 
 						preference for activities stereotypically engaged by the other gender, desire to be treated as the other 
 						gender)
-					<Radio txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
-		      <Radio txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
+					<Radio q_ID = {"q_52"} txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
+		      <Radio q_ID = {"q_52"} txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
+		      <Radio q_ID = {"q_52"} txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		     	Does the client have abnormal sexual desires? (E.g. sexual arousal from cross-dressing, humiliation, 
 		     		physical or psychological suffering of another person)
-		      <Radio txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
-		      <Radio txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_53"} txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
+		      <Radio q_ID = {"q_53"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_53"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
 	      </div>
 	      <div className = "questions">
 					Does the client experience absent or reduced excitement, interest, or thoughts in regards to sexual 
 					activities?
-					<Radio txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
-	        <Radio txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
+					<Radio q_ID = {"q_54"} txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
+	        <Radio q_ID = {"q_54"} txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
+	        <Radio q_ID = {"q_54"} txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
 	      </div>
 	      <br/>
 				<button onClick={this.countAll}>{"Done"}</button>

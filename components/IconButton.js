@@ -13,22 +13,14 @@ class IconButton extends Component {
 			// bgColor: '#82D8E5'
 		}
 		this.myClick = this.myClick.bind(this);
-		// console.log(this.props.name);
-	}
+		console.log(this.props);
+		}
 
 	myClick() {
 		// this.props.onButtonClick();
 		this.props.sendDomain(this.props.name);
 
-		// this.setState({
-		// 	bgColor: '#ECF7F9'
-		// })
-		
-		// if(this.props.name == "Brain") {
-		// 	this.setState({
-		// 		brainActive: true
-		// 	})
-		// }
+
 	}
 	render() {
 		return (

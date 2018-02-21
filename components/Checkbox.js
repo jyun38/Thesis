@@ -19,7 +19,7 @@ class Checkbox extends Component {
   render() {
     return(
       <div>
-        <input type="checkbox" value = {this.props.value} onChange = {this.checkCheckbox} /> 
+        <input type="checkbox" checked id = {this.props.q_ID} value = {this.props.value} onChange = {this.checkCheckbox} /> 
         {this.props.name}
       </div>
     )

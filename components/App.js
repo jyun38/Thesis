@@ -20,7 +20,6 @@ class App extends Component {
 
 	render() {
 		// console.log(this.state.clickedDomain);
-
 		return (
 			<div>
 				<div className = "domainsCon">

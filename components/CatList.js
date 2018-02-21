@@ -16,6 +16,8 @@ import ImpulseQ from './ImpulseQ.js'
 import JudgmentQ from './JudgmentQ.js'
 import MotorQ from './MotorQ.js'
 import OrientationQ from './OrientationQ.js'
+import RiskQ from './RiskQ.js'
+import RitualQ from './RitualQ.js'
 import SelfConceptQ from './SelfConceptQ.js'
 import SelfHarmQ from './SelfHarmQ.js'
 import SensoryQ from './SensoryQ.js'
@@ -63,14 +65,14 @@ class CatList extends Component {
 			'Self-harm'];
 		}
 		else if(this.props.name == "Body"){
-			categoriesList = ['Activities of Daily Living', 'Eating', 'Motor', 'Sensory', 'Sleep', 'Somatic', 'Substance'];
+			categoriesList = ['Activities of Daily Living', 'Eating', 'Motor', 'Ritual', 'Sensory', 'Sleep', 'Somatic', 'Substance'];
 		}
 		else if(this.props.name == "Social"){
 			categoriesList = ['Activities of Daily Living', 'Attachment', 'Communication', 'Inflicting Harm on Others', 
 			'Self-concept'];
 		}
 		else{
-			categoriesList = ['Activities of Daily Living', 'Behavior', 'Impulse', 'Self-harm', 'Substance'];
+			categoriesList = ['Activities of Daily Living', 'Behavior', 'Impulse', 'Risk', 'Ritual', 'Self-harm', 'Substance'];
 		}
 
 		return (
@@ -96,6 +98,8 @@ class CatList extends Component {
 					{this.state.clickedCatName == "Judgment" && <JudgmentQ/>}
 					{this.state.clickedCatName == "Motor" && <MotorQ/>}
 					{this.state.clickedCatName == "Orientation" && <OrientationQ/>}
+					{this.state.clickedCatName == "Risk" && <RiskQ/>}
+					{this.state.clickedCatName == "Ritual" && <RitualQ/>}
 					{this.state.clickedCatName == "Self-concept" && <SelfConceptQ/>}
 					{this.state.clickedCatName == "Self-harm" && <SelfHarmQ/>}
 					{this.state.clickedCatName == "Sensory" && <SensoryQ/>}

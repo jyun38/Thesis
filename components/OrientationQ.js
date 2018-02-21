@@ -22,9 +22,9 @@ class OrientationQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Is the client aware of time, place, and/or identity?
-					<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+					<Radio q_ID = {"q_68"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_68"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_68"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
 				</div>
 				<button onClick={this.countAll}>{"Done"}</button>
 			</div>

@@ -18,13 +18,13 @@ class CogDevQ extends Component {
 			<div className = "questionsCon">
 	      <div className = "questions">
 					The client encounters difficulties with: (choose more than one if necessary)<br/>
-	        <Checkbox name = {"speaking clearly (E.g. slurred speech, broken words, reduced vocabulary)"}/>
-	        <Checkbox name = {"understanding what other people say (E.g. understanding gestures, words, or grammar)"}/>
-	        <Checkbox name = {"learning a language (E.g. reading passages, writing, spelling words)"}/>
-	        <Checkbox name = {"learning fields other than language (E.g. understanding concepts involving time and mathematics, matching based on physical characteristics)"}/>
-	        <Checkbox name = {"adapting to situations"}/>
-	        <Checkbox name = {"recalling things, such as events and concepts"}/>
-	        <Checkbox name = {"controlling emotions"}/>
+	        <Checkbox q_ID = {"q_24"} name = {"speaking clearly (E.g. slurred speech, broken words, reduced vocabulary)"}/>
+	        <Checkbox q_ID = {"q_25"} name = {"understanding what other people say (E.g. understanding gestures, words, or grammar)"}/>
+	        <Checkbox q_ID = {"q_26"} name = {"learning a language (E.g. reading passages, writing, spelling words)"}/>
+	        <Checkbox q_ID = {"q_27"} name = {"learning fields other than language (E.g. understanding concepts involving time and mathematics, matching based on physical characteristics)"}/>
+	        <Checkbox q_ID = {"q_28"} name = {"adapting to situations"}/>
+	        <Checkbox q_ID = {"q_29"} name = {"recalling things, such as events and concepts"}/>
+	        <Checkbox q_ID = {"q_30"} name = {"controlling emotions"}/>
 	      </div>
 	      <button onClick={this.countAll}>{"Done"}</button>
       </div>

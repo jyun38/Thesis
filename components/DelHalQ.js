@@ -37,16 +37,16 @@ class DelHalQ extends Component {
 				<div className = "questions">
 					Does the client experience hallucinations, such as witnessing events occurred to others and experiencing 
 					auditory illusions?
-					<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/> 
+					<Radio q_ID = {"q_55"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_55"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_55"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 	      	Does the client experience delusions, such as preoccupation with fantasies of unlimited success?
-	      	<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_56"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_56"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_56"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
 	      </div>
 	      <button onClick={this.countAll}>{"Done"}</button>
 			</div>

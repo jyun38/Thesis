@@ -17,9 +17,9 @@ class MotorQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					The client experiences: (choose more than one if necessary)
-					<Checkbox name = {"excessive movement (E.g. vocal tics, psychomotor agitation, periods of inexhaustibility)"}/>
-					<Checkbox name = {"lack of movement (E.g. psychomotor retardation, depressed reflexes, stupor)"}/>
-					<Checkbox name = {"any disorganized, catatonic, or uncoordinated behavior"}/>
+					<Checkbox q_ID = {"q_65"} name = {"excessive movement (E.g. vocal tics, psychomotor agitation, periods of inexhaustibility)"}/>
+					<Checkbox q_ID = {"q_66"} name = {"lack of movement (E.g. psychomotor retardation, depressed reflexes, stupor)"}/>
+					<Checkbox q_ID = {"q_67"} name = {"any disorganized, catatonic, or uncoordinated behavior"}/>
 				</div>
 	      <button onClick={this.countAll}>{"Done"}</button>
 			</div>

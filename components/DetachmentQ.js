@@ -35,25 +35,17 @@ class DetachmentQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
-					In which of the following areas does the client have detachment difficulties with? (choose more than one if 
-						necessary)
-					<Checkbox name = {"surroundings"}/>
-					<Checkbox name = {"events"}/>					
-					<Checkbox name = {"identity"}/>
-				</div>
-				<br/>
-				<div className = "questions">
-	      	Does the client feel detached from the world around? (Derealization)
-	      	<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	Does the client feel detached from the world? (Derealization)
+	      	<Radio q_ID = {"q_36"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_36"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_36"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client feel detached from oneself? (Depersonalization)
-		      <Radio txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_37"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
+		      <Radio q_ID = {"q_37"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_37"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
 	      </div>
 	     	<button onClick={this.countAll}>{"Done"}</button>
 			</div>

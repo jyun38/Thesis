@@ -44,30 +44,31 @@ class SelfConceptQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
-					The client has encountered difficulties in:
-					<Checkbox name = {"disruption of identity (E.g. two or more different personality states, unstable self-image)"}/>
-					<Checkbox name = {"establishment of self-image while socializing with others (E.g. need for excessive admiration, difficulties with expressing disagreement with others)"}/>
-					<Checkbox name = {"acquisition of confidence"}/>
+					The client has encountered:
+					<Checkbox q_ID = {"q_77"} name = {"disruption of identity (E.g. two or more different personality states, unstable self-image)"}/>
+					<Checkbox q_ID = {"q_79"} name = {"establishment of self-image while socializing with others (E.g. need for excessive admiration, difficulties with expressing disagreement with others)"}/>
+					<Checkbox q_ID = {"q_81"} name = {"lack of self-confidence"}/>
 				</div>
 				<br/>
 				<div className = "questions">
 					Is the client’s self-image heavily influenced by appearance, body shape, or weight?
-					<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/>
+					<Radio q_ID = {"q_78"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_78"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_78"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/>
 				</div>
 				<br/>
 				<div className = "questions">
 					Is the client excessively confident about oneself? (E.g. high self-esteem, arrogance, self-importance)
-					<Radio txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-	        <Radio txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/>
+					<Radio q_ID = {"q_80"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
+	        <Radio q_ID = {"q_80"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
+	        <Radio q_ID = {"q_80"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/>
 				</div>
 				<br/>
 				<div className = "questions">
-					Does the client have an exaggerated expression or emotion?					<Radio txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-	        <Radio txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/>
+					Does the client have an exaggerated expression or emotion?					
+					<Radio q_ID = {"q_82"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
+	        <Radio q_ID = {"q_82"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
+	        <Radio q_ID = {"q_82"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/>
 				</div>
 	      <button onClick={this.countAll}>{"Done"}</button>
 			</div>

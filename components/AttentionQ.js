@@ -29,9 +29,9 @@ class AttentionQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any hyperactive-impulsive symptom?
-	        <Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_15"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
 	      </div>
 	      <br/>
 	      <button onClick={this.countAll}>{"Done"}</button>

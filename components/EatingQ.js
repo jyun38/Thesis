@@ -66,45 +66,45 @@ class EatingQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any binge eating symptoms?
-					<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/> 
+					<Radio q_ID = {"q_38"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_38"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_38"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client purge after eating?
-	      	<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_39"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_39"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_39"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client show decreased appetite?
-		      <Radio txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_40"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
+		      <Radio q_ID = {"q_40"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_40"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client feel embarrassed by how much he/she/they is/are eating?
-					<Radio txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-		      <Radio txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
+					<Radio q_ID = {"q_41"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
+		      <Radio q_ID = {"q_41"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
+		      <Radio q_ID = {"q_41"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have an abnormal diet structure? (E.g. heavily relying on supplements, eating inedible 
 						substances)
-					<Radio txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
-		      <Radio txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
+					<Radio q_ID = {"q_42"} txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
+		      <Radio q_ID = {"q_42"} txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
+		      <Radio q_ID = {"q_42"} txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client regurgitate while eating?
-		      <Radio txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
-		      <Radio txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_43"} txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
+		      <Radio q_ID = {"q_43"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_43"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
 	      </div>
 				<button onClick={this.countAll}>{"Done"}</button>
 

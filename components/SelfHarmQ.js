@@ -26,9 +26,9 @@ class SelfHarmQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any behaviors that cause self-injury?
-					<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+					<Radio q_ID = {"q_83"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_83"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_83"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
 				</div>
 	      <button onClick={this.countAll}>{"Done"}</button>
 			</div>

@@ -86,68 +86,66 @@ class BehaviorQ extends Component {
 				<div className = "questions">
 					Does the client use any mind-altering substances such as Cannabis, Opioid, Hallucinogen, Phencyclidine, 
 					and Cocaine?
-	        <Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_16"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_16"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_16"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have excessive concerns about his/her/their physical health?
-	      	<Radio txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_17"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
+	        <Radio q_ID = {"q_17"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	        <Radio q_ID = {"q_17"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client behave differently compared to others? (E.g. acting solitarily, passaging feces into 
 		      	inappropriate places)
-		      <Radio txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_18"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
+		      <Radio q_ID = {"q_18"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_18"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client demonstrate rigidity or stubbornness? (E.g. restricted patterns of behavior, repetitive movements)
-					<Radio txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-		      <Radio txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
+					<Radio q_ID = {"q_19"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
+		      <Radio q_ID = {"q_19"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
+		      <Radio q_ID = {"q_19"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have any abnormal eating behavior, such as binge eating and purging?
-					<Radio txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
-		      <Radio txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
+					<Radio q_ID = {"q_20"} txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
+		      <Radio q_ID = {"q_20"} txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
+		      <Radio q_ID = {"q_20"} txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client encounter any difficulties in adjusting to certain situations? (E.g. aggression, 
 						self-injury)
-		      <Radio txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
-		      <Radio txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_21"} txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
+		      <Radio q_ID = {"q_21"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_21"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
 		    </div>
 		    <br/>
 		    <div className = "questions">
 					Does the client have any abnormal behavior while interacting with others? (E.g. communicative deficits, 
 						deception)
-		      <Radio txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
-		      <Radio txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
+		      <Radio q_ID = {"q_22"} txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
+		      <Radio q_ID = {"q_22"} txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
+		      <Radio q_ID = {"q_22"} txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
 		    </div>
 		    <br/>
 		    <div className = "questions">
 					Does the client have any aggressive behavior, including physical or verbal aggression?
-		      <Radio txt = {"Yes"} name = "8" onAnswer = {this.setQ8Answer}/>
-		      <Radio txt = {"No"} name = "8" onAnswer = {this.setQ8Answer}/> 
-		      <Radio txt = {"Not enough information"} name = "8" onAnswer = {this.setQ8Answer}/> 
+		      <Radio q_ID = {"q_23"} txt = {"Yes"} name = "8" onAnswer = {this.setQ8Answer}/>
+		      <Radio q_ID = {"q_23"} txt = {"No"} name = "8" onAnswer = {this.setQ8Answer}/> 
+		      <Radio q_ID = {"q_23"} txt = {"Not enough information"} name = "8" onAnswer = {this.setQ8Answer}/> 
 		    </div>
 				<button onClick={this.countAll}>{"Done"}</button>
       </div>
 		)
 	}
-
-
 }
 
 export default BehaviorQ

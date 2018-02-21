@@ -28,9 +28,9 @@ class ImpulseQ extends Component {
   			<div className = "questions">
   				Does the client encounter any difficulties with impulse control? (E.g. stealing and deception without 
   					obvious external rewards, harming others or oneself, binge eating, substance abuse)
-  				<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+  				<Radio q_ID = {"q_62"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_62"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_62"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
   			</div>
   			<button onClick={this.countAll}>{"Done"}</button>
   		</div>

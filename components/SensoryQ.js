@@ -26,9 +26,9 @@ class SensoryQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Is the client influenced by any sensory impairments?
-					<Radio txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+					<Radio q_ID = {"q_84"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_84"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
+	        <Radio q_ID = {"q_84"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
 				</div>
 	      <button onClick={this.countAll}>{"Done"}</button>
 			</div>
