@@ -14,14 +14,14 @@ class Category extends Component {
   }
 
   catClick = () => {
-    this.props.callbackFromParent(this.props.name);
+    this.props.sendCat(this.props.name);
     // console.log(this.props.doneAdl)
   }
 
   render() {  
     return (
       <div>
-        <button className = "catButton" style = {{backgroundColor : this.state.backgroundColor}} onClick = {this.catClick}>
+        <button className = "catButton" onClick = {this.catClick}>
           {this.props.name}
         </button>
       </div>

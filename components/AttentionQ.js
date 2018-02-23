@@ -18,6 +18,7 @@ class AttentionQ extends Component {
 		this.setState({
 			question1Choice: e.target.value
 		});
+
 	}
 
 	countAll = () => {

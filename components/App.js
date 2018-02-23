@@ -9,17 +9,27 @@ class App extends Component {
 	constructor(){
 		super();
     this.state = {
-    	clickedDomain: null
+    	clickedDomain: null,
+    	clickedQ_ID: null
     };
-   	this.giveCat= this.giveCat.bind(this);
 	}
 
 	giveCat = (domainName) => {
-		this.setState({ clickedDomain: domainName });
+		this.setState({ 
+			clickedDomain: domainName 
+		});
+	}
+
+	getQ_ID = (q_ID) => {
+		this.setState({
+			clickedQ_ID: q_ID
+		})
 	}
 
 	render() {
-		// console.log(this.state.clickedDomain);
+		const q_Data = ["myId"]; 
+		q_Data.push(this.state.clickedQ_ID);
+		// console.log(q_Data);
 		return (
 			<div>
 				<div className = "domainsCon">
@@ -30,7 +40,7 @@ class App extends Component {
 					<IconButton name = {"Actions"} sendDomain = {this.giveCat}/>
 				</div> 
 				<div>
-					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"}/>}
+					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} callBackFromParent ={this.getQ_ID}/>}
 					{this.state.clickedDomain == "Emotion" && <CatList name = {"Emotion"}/>}
 					{this.state.clickedDomain == "Body" && <CatList name = {"Body"}/>}
 					{this.state.clickedDomain == "Social" && <CatList name = {"Social"}/>}															

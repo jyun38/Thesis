@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import '../main.css'
 import CatList from './CatList.js'
 
-// import logo from '../brain.png'
-
 class IconButton extends Component {
 
 	constructor(props) {
@@ -12,16 +10,14 @@ class IconButton extends Component {
 			clickedDomain: null
 			// bgColor: '#82D8E5'
 		}
-		this.myClick = this.myClick.bind(this);
-		console.log(this.props);
+		// console.log(this.props);
 		}
 
-	myClick() {
+	myClick = () => {
 		// this.props.onButtonClick();
 		this.props.sendDomain(this.props.name);
-
-
 	}
+
 	render() {
 		return (
 			<div>

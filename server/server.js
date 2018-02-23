@@ -19,14 +19,25 @@ app.use('/', function(req, res){
 	res.sendFile(path.resolve('client/index.html'));
 })
 
-// connection.connect(function(err){
-// 	if(err) {
-// 			throw(err);
-// 			console.log("There was an error in connecting the database.");
-// 		}	
-// 	console.log("Database is connected.");
-// });
+// console.log("HELLO");
 
+
+connection.connect(function(err){
+	if(err) {
+			throw(err);
+			console.log("There was an error in connecting the database.");
+		}	
+	console.log("Database is connected.");
+});
+
+connection.query('SELECT * FROM MentalHealth.category_description WHERE category="sleep"', 
+	function (err, rows, fields) {
+  	if (err) throw err
+  		console.log(connection)
+  	//console.log('The solution is: ', rows)
+})
+
+connection.end()
 // app.get("/query",function(req,res){
 // 	connection.query('SELECT * FROM MentalHealth.category_description WHERE category="sleep"', 
 // 	function(err, rows) {
@@ -44,27 +55,44 @@ app.use('/', function(req, res){
 // app.get('/interface', function (req, resp) {
 // 		resp.sendFile('index.html', {root: path.join(__dirname, '../client')})
 // });
+// Listen to POST requests to /users.
+// app.post('/results', function(req, res) {
+//   // Get sent data.
+//   var user = req.body;
+//   // Do a MySQL query.
+//   var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category="sleep"', user, function(err, result) {
+//     // Neat!
+//   });
+//   res.end('Success');
+// });
 
+// // 		console.log("Database is connected.");
+// app.post('/results', function(req, res){
+// 	var user = req.body;
 
-// 		console.log("Database is connected.");
-// 		connection.query('SELECT * FROM MentalHealth.category_description WHERE category="sleep"',
-// 			function (err, rows){
-// 				if(!err){
-// 					// console.log(rows);
-// 					// res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
-// 					res.send(rows);
-// 					// res.render('client/index.html', {rows: rows});
-// 					// return callback(err, rows);
-// 				}
-// 				else{
-// 					throw(err);
-// 					console.log('Error while performing Query.');
-// 				}
-// 			// console.log("wtf is this shit");
-// 		});
-// 		// res.end('Success!');
-// 	// 	// connection.end();
+// 	var query = 'SELECT * FROM MentalHealth.category_description WHERE category="sleep"'
 // 	});
+// 	res.end('Success!');
+
+
+		// connection.query('SELECT * FROM MentalHealth.category_description WHERE category="sleep"',
+		// 	function (err, rows){
+		// 		if(!err){
+		// 			// console.log(rows);
+		// 			// res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+		// 			res.send(rows);
+		// 			// res.render('client/index.html', {rows: rows});
+		// 			// return callback(err, rows);
+		// 		}
+		// 		else{
+		// 			throw(err);
+		// 			console.log('Error while performing Query.');
+		// 		}
+		// 	// console.log("wtf is this shit");
+		// });
+		// res.end('Success!');
+	// 	// connection.end();
+	// });
 
 // });
 

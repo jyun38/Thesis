@@ -33,26 +33,37 @@ class CatList extends Component {
 		super(props);
 		this.state = {
 			clickedCatName: null,
-			adlDone: false
+			clickedQ_ID: null,
 		};
 	}
 
-	myCallback = (dataFromChild) => {
+	getCat = (dataFromChild) => {
 		this.setState({ 
-			clickedCatName: dataFromChild 
+			clickedCatName: dataFromChild
 		});
 	}
 
-	getCheckAdl = (check) => {
-		if(check == true){
-			this.setState({
-				adlDone: true
-			})
-		}
+	getQ_ID = (dataFromChild) => {
+		this.setState({ 
+			clickedQ_ID: dataFromChild 
+		});
 	}
-	// getAdlChoice = (AdlAnswer) => {
-	// 	console.log(AdlAnswer);
-	// }
+
+	componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.myFunc(),
+      0.001
+    );
+  }
+
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
+
+	myFunc = () => {
+		// this.setQ1Answer;
+		this.props.callBackFromParent(this.state.clickedQ_ID);
+	}
 
 	render() {
 		var categoriesList;  
@@ -79,11 +90,11 @@ class CatList extends Component {
 			<div>
 				<div className = "categoriesCon">
 					{categoriesList.map((x, i) => 
-						<Category name = {x} key = {i} callbackFromParent = {this.myCallback}/>)	
+						<Category name = {x} key = {i} sendCat = {this.getCat}/>)	
 					}
 				</div>
 				<div>
-					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendCheck = {this.getCheckAdl} />} 
+					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getQ_ID}/>} 
 					{this.state.clickedCatName == "Attachment" && <AttachmentQ/>}  
 					{this.state.clickedCatName == "Attention" && <AttentionQ/>}
 					{this.state.clickedCatName == "Behavior" && <BehaviorQ/>}

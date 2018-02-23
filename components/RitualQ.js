@@ -24,6 +24,7 @@ class RitualQ extends Component {
 	
 	render = () => {
 		return(
+
 			<div className = "questionsCon">
 				<div className = "questions">
 					Is the client preoccupied with details, rules, sameness, or routines?
@@ -72,3 +73,5 @@ class RitualQ extends Component {
 	}
 
 }
+
+export default RitualQ

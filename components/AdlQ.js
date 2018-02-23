@@ -7,40 +7,45 @@ import $ from 'jquery';
 class AdlQ extends Component {
 	constructor(props){
 		super(props);
-		console.log(this.props);
 		this.state = {
 			question1Choice: null, 
+			clickedQ_ID: null,
 			allQsAnswered: false
 		}	
 	}
 
-	setQ1Answer = (e) => {
-		this.setState({
-			question1Choice: e.target.value
-		});
+	componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.adlAnswer(),
+      0.001
+    );
+  }
 
-		// return e.target.value
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
+
+	adlCallBack = (dataFromChild) => {
+		this.setState({ 
+			clickedQ_ID: dataFromChild 
+		});
+		// console.log("hi, in AdlQ.js"); 
 	}
 
- 	countAll = () => {
- 		// alert($("input:checkbox:checked").length);
- 		// this.props.sendAdlChoice(this.setQ1Answer);
- 		if(($("input:radio:checked").length > 0 ) && ($("input:checkbox:checked").length > 0 )) {
- 			var questionsAnswered = true;
- 		}
- 		this.props.sendCheck(questionsAnswered);
- 		console.log("question 1 : ", this.state.question1Choice);
- 		console.log("Number of checkboxes chosen : ", $("input:checkbox:checked").length);
- 	}
+	adlAnswer = () => {
+		// this.setQ1Answer;
+		this.props.sendQ_ID(this.state.clickedQ_ID);
+	}
 
 	render() {
+		// console.log(this.state.clickedQ_ID);
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client use any mind-altering substances such as Cannabis, Hallucinogen, and Phencyclidine? <br/>
-	        <Radio q_ID = {"q_1"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio q_ID = {"q_1"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio q_ID = {"q_1"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_1"} txt = {"Yes"} name = "1" callbackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer} />
+	        <Radio q_ID = {"q_1"} txt = {"No"} name = "1" callbackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer}/> 
+	        <Radio q_ID = {"q_1"} txt = {"Not enough information"} name = "1" callbackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer}/>
 	      </div>
 	      <br/>
 	      <div className = "questions">
@@ -53,7 +58,6 @@ class AdlQ extends Component {
 	        <Checkbox q_ID = {"q_7"} name = {"recreational activities, such as participating in outdoor activities, watching movies, and listening to music"}/>
 	        <Checkbox q_ID = {"q_8"} name = {"academic functioning, such as memory, reasoning, and comprehension"}/>
 	      </div>
-	      <button onClick={this.countAll}>{"Done"}</button>
       </div>
 		)
 	}
