@@ -10,8 +10,23 @@ class App extends Component {
 		super();
     this.state = {
     	clickedDomain: null,
-    	clickedQ_ID: null
+    	clickedQ_ID: null,
+    	Ids: []
     };
+	}
+
+	componentDidMount = () => {
+		fetch('/next', {
+			method: 'GET'
+		})
+			.then(res => {
+				console.log(res);
+				return res.json()
+			})
+			.then(Ids => {
+				console.log(Ids);
+				this.setState({ Ids})
+			});
 	}
 
 	giveCat = (domainName) => {
@@ -24,10 +39,27 @@ class App extends Component {
 		this.setState({
 			clickedQ_ID: q_ID
 		})
+
 	}
 
+	// handleSubmit(e) {
+	// 	e.preventDefault();
+	// 	var self = this;
+	// 	fetch('/users', {
+	// 		method: 'POST', 
+	// 		data: {
+	// 			id: this.state.clickedQ_ID
+	// 		}
+	// 	})
+	// 	.then(function(response){
+	// 		return response.json()
+	// 	}).then(function(body){
+	// 		console.log(body);
+	// 	});
+	// }
+
 	render() {
-		const q_Data = ["myId"]; 
+		var q_Data = ["myId"]; 
 		q_Data.push(this.state.clickedQ_ID);
 		// console.log(q_Data);
 		return (
@@ -45,6 +77,9 @@ class App extends Component {
 					{this.state.clickedDomain == "Body" && <CatList name = {"Body"}/>}
 					{this.state.clickedDomain == "Social" && <CatList name = {"Social"}/>}															
 					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"}/>}
+				</div>
+				<div>
+					{this.state.Ids}
 				</div>
 			</div>
 		)
