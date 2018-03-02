@@ -4,31 +4,27 @@ import Category from './Category.js'
 import IconButton from './IconButton.js'
 import CatList from './CatList.js'
 import AdlQ from './AdlQ.js'
+import ajax from 'jquery'; 
+
 
 class App extends Component {
 	constructor(){
 		super();
     this.state = {
     	clickedDomain: null,
-    	clickedQ_ID: null,
-    	Ids: []
+    	clickedQ_ID: "attachment",
+    	cat: ["attachment"]
     };
-	}
+  }
 
 	componentDidMount = () => {
-		fetch('/next', {
-			method: 'GET'
+		fetch('/res', {
+			method: 'POST', 
+			body: JSON.stringify({id: this.state.clickedQ_ID})
 		})
-			.then(res => {
-				console.log(res);
-				return res.json()
-			})
-			.then(Ids => {
-				console.log(Ids);
-				this.setState({ Ids})
-			});
+			.then(response => response.json())
 	}
-
+	
 	giveCat = (domainName) => {
 		this.setState({ 
 			clickedDomain: domainName 
@@ -42,25 +38,19 @@ class App extends Component {
 
 	}
 
-	// handleSubmit(e) {
-	// 	e.preventDefault();
-	// 	var self = this;
-	// 	fetch('/users', {
-	// 		method: 'POST', 
-	// 		data: {
-	// 			id: this.state.clickedQ_ID
-	// 		}
-	// 	})
-	// 	.then(function(response){
-	// 		return response.json()
-	// 	}).then(function(body){
-	// 		console.log(body);
-	// 	});
-	// }
-
 	render() {
-		var q_Data = ["myId"]; 
+		var q_Data = []; 
 		q_Data.push(this.state.clickedQ_ID);
+
+		// $.ajax({
+	 //    url: '/res',
+	 //    type: 'POST',
+	 //    body: 'mylife',
+	 //    data: JSON.stringify({id: q_Data})
+	 //  });
+
+	        
+	  console.log('React id  : ' + q_Data);
 		// console.log(q_Data);
 		return (
 			<div>

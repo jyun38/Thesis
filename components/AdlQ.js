@@ -17,7 +17,7 @@ class AdlQ extends Component {
 	componentDidMount() {
     this.loadInterval = setInterval(
       () => this.adlAnswer(),
-      0.001
+      0.0001
     );
   }
 
