@@ -43,23 +43,50 @@ app.get('/', function(req, res){
 	res.sendFile(path.resolve('client/index.html'));
 })
 
-router.get('/res', function(req, res, next){
-	// console.log(req.body);
-		var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
-		'attachment', 
+// router.get('/res', function(req, res, next){
+// 	// console.log(req.body);
+// 		var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
+// 		'attachment', 
+// 		function(error, results, fields){
+// 			connection.end();
+// 			if (error) throw error;
+// 			res.send(results);
+// 		});	
+// });
+
+router.get('/res2', function(req,res,next){
+	// 	var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
+	// 	req.body.id, 
+	// 	function(error, results, fields){
+	// 		connection.end();
+	// 		if (error) throw error;
+	// 		//console.log(results);
+	// 		res.send(results);
+	// //		console.log(results);
+	// 	});	 
+	//console.log(req.body.id)
+	// res.send(res);
+	// var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
+	// req.body.id, 
+	// function(error, results, fields){
+	// 	connection.end();
+	// 	if (error) throw error;
+	// 	console.log(results);
+	// 	res.send(results);
+	// });
+})
+
+app.post('/res2', (req,res) =>{
+	var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
+		req.body.id, 
 		function(error, results, fields){
 			connection.end();
 			if (error) throw error;
+			//console.log(results);
 			res.send(results);
-		});	
-});
-
-// app.post('/postid', function (req, res) {
-//   // var getId = req.body.q_Data;
-//   // console.log("id Node js : " + getId); 
-    
-// });
-
+			//console.log(results);
+		});	 
+})
 
 //localhost 4000
 var port = 4000;
@@ -67,6 +94,9 @@ app.listen(port, function(error) {
   if (error) throw error;
   console.log("Listening on http://localhost:", port);
 });
+
+
+ 
 
 // connection.end();
 
