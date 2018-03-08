@@ -6,16 +6,30 @@ import CatList from './CatList.js'
 import AdlQ from './AdlQ.js'
 import ajax from 'jquery';
 import $ from 'jquery';
- 
+var idData ='';
  
 class App extends Component {
 	constructor(){
 		super();
     this.state = {
     	clickedDomain: null,
-    	clickedQ_ID: 'attachment'
+    	clickedQ_ID: 'attachment', 
+    	result: ''
     };
   }
+
+   extractData = () => { 
+ 	fetch('http://localhost:4000/res2')
+ 		.then(response => {
+ 			let rawData = response.json()
+ 			rawData.then(function(value){
+ 				if(typeof value != 'undefined'){
+ 					idData = value.table[0][0].from_ID
+ 				}
+ 			})
+ 		})
+ 		this.setState({result:idData});
+ }
 
 	componentDidMount = () => {
 		$.ajax({
@@ -24,14 +38,23 @@ class App extends Component {
 	    data: {id: this.state.clickedQ_ID}
 	  });
 
-		setInterval(() =>  		
-		fetch("http://localhost:4000/res2")
-			.then(response => {
-			       console.log(response.json())
-			}),
-     	10000
-    );
+		setInterval(() => 
+			this.extractData(), 1000
+		// fetch("http://localhost:4000/res2")
+		// 	.then(response => {
+		// 				let rawData = response.json(); 
+		// 		 		rawData.then(function(value){
+		// 		 			if(typeof value != 'undefined'){
+		// 		 				idData = value.table[0][0].from_ID
+		// 		 			}
+				 			
+		// 		 		})
+		// 	}),
+  //    	1000
+      );
 	}
+
+
  
 	giveCat = (domainName) => {
 		this.setState({ 
@@ -69,7 +92,7 @@ class App extends Component {
 					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"}/>}
 				</div>
 				<div>
-
+					<text> {this.state.result} </text> 
 				</div>
 			</div>
 		)

@@ -44,17 +44,6 @@ app.get('/', function(req, res){
 	res.sendFile(path.resolve('client/index.html'));
 })
 
-// router.get('/res', function(req, res, next){
-// 	// console.log(req.body);
-// 		var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
-// 		'attachment', 
-// 		function(error, results, fields){
-// 			connection.end();
-// 			if (error) throw error;
-// 			res.send(results);
-// 		});	
-// });
-
 router.post('/res2', (req,res) => {
 	 var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
 		req.body.id, 
