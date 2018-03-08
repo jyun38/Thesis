@@ -5,8 +5,9 @@ var config = require('../webpack.config.js');
 var webpack = require('webpack');
 var mysql = require('mysql');
 var router = express.Router();
-// var myApp = require('../components/App.js');
-// console.log(myApp);
+let newResults;
+var fs = require('fs');
+
 //database information
 var connection = mysql.createConnection({
 	host: 'localhost', 
@@ -24,7 +25,7 @@ connection.connect(function(err){
 });
 
 var app = express(); // main app
-// var admin = express(); // the sub app
+ 
 
 var compiler = webpack(config);
 // app.use(express.bodyParser());
@@ -54,39 +55,23 @@ app.get('/', function(req, res){
 // 		});	
 // });
 
-router.get('/res2', function(req,res,next){
-	// 	var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
-	// 	req.body.id, 
-	// 	function(error, results, fields){
-	// 		connection.end();
-	// 		if (error) throw error;
-	// 		//console.log(results);
-	// 		res.send(results);
-	// //		console.log(results);
-	// 	});	 
-	//console.log(req.body.id)
-	// res.send(res);
-	// var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
-	// req.body.id, 
-	// function(error, results, fields){
-	// 	connection.end();
-	// 	if (error) throw error;
-	// 	console.log(results);
-	// 	res.send(results);
-	// });
-})
-
-app.post('/res2', (req,res) =>{
-	var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
+router.post('/res2', (req,res) => {
+	 var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
 		req.body.id, 
 		function(error, results, fields){
-			connection.end();
 			if (error) throw error;
-			//console.log(results);
-			res.send(results);
-			//console.log(results);
-		});	 
+			// res.send(results);
+			newResults = results; 
+		});
+	 console.log(req.body.id);
 })
+
+router.get('/res2', function(req,res,next){
+		var obj = {table:[]};
+		obj.table.push(newResults);
+		var json = JSON.stringify(obj);
+		res.send(json);
+ })
 
 //localhost 4000
 var port = 4000;
@@ -94,11 +79,6 @@ app.listen(port, function(error) {
   if (error) throw error;
   console.log("Listening on http://localhost:", port);
 });
-
-
- 
-
-// connection.end();
 
 
 

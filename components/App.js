@@ -5,16 +5,15 @@ import IconButton from './IconButton.js'
 import CatList from './CatList.js'
 import AdlQ from './AdlQ.js'
 import ajax from 'jquery';
-import $ from 'jquery'; 
-
-
+import $ from 'jquery';
+ 
+ 
 class App extends Component {
 	constructor(){
 		super();
     this.state = {
     	clickedDomain: null,
-    	clickedQ_ID: 'attachment',
-    	cat: ["attachment"]
+    	clickedQ_ID: 'attachment'
     };
   }
 
@@ -25,11 +24,15 @@ class App extends Component {
 	    data: {id: this.state.clickedQ_ID}
 	  });
 
-		fetch('/res2')
-		.then(response => console.log(response));
+		setInterval(() =>  		
+		fetch("http://localhost:4000/res2")
+			.then(response => {
+			       console.log(response.json())
+			}),
+     	10000
+    );
 	}
-
-	
+ 
 	giveCat = (domainName) => {
 		this.setState({ 
 			clickedDomain: domainName 
@@ -40,7 +43,6 @@ class App extends Component {
 		this.setState({
 			clickedQ_ID: q_ID
 		})
-
 	}
 
 	render() {
@@ -67,7 +69,7 @@ class App extends Component {
 					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"}/>}
 				</div>
 				<div>
-					
+
 				</div>
 			</div>
 		)
