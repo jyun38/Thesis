@@ -12,8 +12,6 @@ class Radio extends Component {
   myFunc = () => {
     this.props.onAnswer();
     this.props.callbackFromParent(this.props.q_ID);
-    // console.log("hi, in Radio.js")
-
   }
 
   render() {
@@ -21,7 +19,6 @@ class Radio extends Component {
       <div>
         <input type="radio" id = {this.props.q_ID} name = {this.props.name} value = {this.props.txt} onClick = {this.myFunc}/> 
         {this.props.txt} <br/>
-        
       </div>
     )
   }

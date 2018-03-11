@@ -7,7 +7,7 @@ var mysql = require('mysql');
 var router = express.Router();
 let newResults;
 var fs = require('fs');
-
+ 
 //database information
 var connection = mysql.createConnection({
 	host: 'localhost', 
@@ -25,18 +25,13 @@ connection.connect(function(err){
 });
 
 var app = express(); // main app
- 
-
 var compiler = webpack(config);
-// app.use(express.bodyParser());
 
-// can load files in public directory
-// app.use(bodyParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('./public'));
-app.use(router);
+app.use(router) 
 
 // whenever a middleware function is mounted on / path
 // executed for any type of HTTP request on / 
@@ -44,15 +39,29 @@ app.get('/', function(req, res){
 	res.sendFile(path.resolve('client/index.html'));
 })
 
-router.post('/res2', (req,res) => {
-	 var query = connection.query('SELECT * FROM MentalHealth.category_description WHERE category=?',
-		req.body.id, 
+databaseQuery = (req, res) =>{
+	var queryIdsList = []; 
+	for(i=0; i<req.body.id.length; i++){
+		queryIdsList.push(JSON.parse(req.body.id[i],"")); 
+		// console.log(req.body.id[i]);
+	}
+	console.log(queryIdsList);
+
+ 	var query = connection.query('SELECT DISTINCT symptom FROM MentalHealth.questions_tbl, MentalHealth.symptom_tbl WHERE question_ID IN (?);',
+		queryIdsList,
 		function(error, results, fields){
 			if (error) throw error;
-			// res.send(results);
 			newResults = results; 
+			// console.log(req.body.id);
+			// console.log(results);
 		});
-	 console.log(req.body.id);
+ 	// console.log(req.body.id.length);
+	// console.log(typeof(req.body.id));
+	// console.log(req.body.id);
+}
+
+router.post('/res2', (req,res) => {
+		 databaseQuery(req, res)
 })
 
 router.get('/res2', function(req,res,next){

@@ -9,8 +9,7 @@ class AdlQ extends Component {
 		super(props);
 		this.state = {
 			question1Choice: null, 
-			clickedQ_ID: null,
-			allQsAnswered: false
+			clickedQ_ID: null
 		}	
 	}
 
@@ -29,16 +28,13 @@ class AdlQ extends Component {
 		this.setState({ 
 			clickedQ_ID: dataFromChild 
 		});
-		// console.log("hi, in AdlQ.js"); 
 	}
 
 	adlAnswer = () => {
-		// this.setQ1Answer;
 		this.props.sendQ_ID(this.state.clickedQ_ID);
 	}
 
 	render() {
-		// console.log(this.state.clickedQ_ID);
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">

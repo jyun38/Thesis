@@ -108,3 +108,10 @@ body {
   float: left;
   height: 580px;
 }
+
+.result{
+  border: 1px solid black;
+  height: 500px;
+  width: 300px;
+  overflow: auto;
+}
