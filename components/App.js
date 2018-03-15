@@ -13,45 +13,45 @@ class App extends Component {
 		super();
     this.state = {
     	clickedDomain: null,
-    	clickedQ_ID: null, 
-    	another: '"q_3"',
+    	AdlQ_ID: null, 
+    	AttentionQ_ID: null,
+    	receivedBrain: null,
     	result: null
     };
   }
 
   extractData = () => { 
-  	console.log("extracting data");
+  	console.log("Getting data...");
 	 	fetch('http://localhost:4000/res2')
 	 		.then(response => {
-	 			let rawData = response.json()
+	 			let rawData = response.json();
 	 			rawData.then(function(value){
-	 				console.log(typeof(value));
-	 				if(typeof value != 'undefined' && value != null){
+	 				if(typeof(value) != 'undefined' && value != null){
+	 					console.log("...........yay");
 	 					if(value.table[0]!= null){
-	 						idData = value.table[0][0].symptom
+	 						value.table[0] = JSON.parse(value.table[0])
+	 						// idData = value.table[0];
+	 						idData = value.table[0][0]
 	 					}
 	 				}
 	 			})
 	 		})
-	 	this.setState({result: JSON.stringify(idData)});
+	 	this.setState({
+	 		result: JSON.stringify(idData)
+	 	});
  }
 
  	ajaxPost = () =>{
- 		console.log("Sending ajax post");
+ 		console.log("Sending IDs...");
  		var all_ID = [];
- 		all_ID.push(this.state.clickedQ_ID);
- 		all_ID.push(this.state.another);
- 		// console.log("PRINT " + all_ID);
- 		// console.log(typeof(trying));
- 		// if(trying != null){
- 		// 	console.log("element: " + trying[1])
- 		// }
- 		// console.log(trying[0]);
- 		// console.log(this, this.state, this.state.clickedQ_ID);
+ 		all_ID.push(this.state.receivedBrain);
+ 		// all_ID.push(this.state.another);
+ 		console.log("PRINT " + all_ID);
+ 	
 		$.ajax({
-		url: '/res2',
-		type: 'POST',
-		data: {id: all_ID}
+			url: '/res2',
+			type: 'POST',
+			data: {id: all_ID}
 		}).then(this.extractData());		
  	}
 
@@ -61,13 +61,17 @@ class App extends Component {
 		});
 	}
 
-	getQ_ID = (q_ID) => {
-		this.setState({
-			clickedQ_ID: JSON.stringify(q_ID)
-		})
+	getQ_ID = (q_IDs) => {
+		if(q_IDs != null){
+			this.setState({
+				receivedBrain: JSON.stringify(q_IDs)
+			// // AttentionQ_ID: JSON.stringify(q_ID)
+			})
+		}
 	}
 
 	render() {
+
 		return (
 			<div>
 				<div className = "domainsCon">
@@ -78,7 +82,7 @@ class App extends Component {
 					<IconButton name = {"Actions"} sendDomain = {this.giveCat}/>
 				</div> 
 				<div>
-					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} callBackFromParent ={this.getQ_ID}/>}
+					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} sendBrain ={this.getQ_ID}/>}
 					{this.state.clickedDomain == "Emotion" && <CatList name = {"Emotion"}/>}
 					{this.state.clickedDomain == "Body" && <CatList name = {"Body"}/>}
 					{this.state.clickedDomain == "Social" && <CatList name = {"Social"}/>}															

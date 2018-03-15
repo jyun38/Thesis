@@ -25,28 +25,26 @@ import SleepQ from './SleepQ.js'
 import SomaticQ from './SomaticQ.js'
 import SubstanceQ from './SubstanceQ.js'
 import ThoughtQ from './ThoughtQ.js'
+import Radio from './Radio.js'
+import Checkbox from './Checkbox.js'
+import $ from 'jquery'; 
 
+// var brainIDS = '';
+// var brainIDs = new Set();
 
+var brainIDS = [];
 class CatList extends Component {
 
 	constructor(props) {
+
 		super(props);
+		// console.log(this.props);
 		this.state = {
 			clickedCatName: null,
-			clickedQ_ID: null,
+			clickedAdlQ_ID: null,
+			clickedBrainIDs: null
 		};
-	}
-
-	getCat = (dataFromChild) => {
-		this.setState({ 
-			clickedCatName: dataFromChild
-		});
-	}
-
-	getQ_ID = (dataFromChild) => {
-		this.setState({ 
-			clickedQ_ID: dataFromChild 
-		});
+		// console.log(this.props);
 	}
 
 	componentDidMount() {
@@ -60,12 +58,66 @@ class CatList extends Component {
   	clearInterval(this.loadInterval); 
   }
 
+	//get clicked category name
+	getCat = (dataFromChild) => {
+		this.setState({ 
+			clickedCatName: dataFromChild
+		});
+	}
+
+	// get clicked Q_ID
+	getBrainQ_ID = (dataFromChild) => {
+		// console.log(dataFromChild)
+		// console.log(typeof(dataFromChild));
+		// brainIDs.clear(); 
+		// if(dataFromChild != null){
+		// 			for (var i = 0; i<dataFromChild.length; i++){
+		// 	brainIDs.add(dataFromChild[i]);
+	
+		// }
+		// }
+
+		// console.log(dataFromChild);
+		// console.log(brainIDs);
+		// if(dataFromChild != null){
+		// 	// console.log("IN HERE");
+  //    for(var i=0; i<dataFromChild.length; i++){
+  //    		// console.log("IN FOR LOOP");
+  //      // if(brainIDS.indexOf(dataFromChild[i]) == -1){
+  //      	 // console.log("ADDING ELEMENTS");
+  //    	if(brainIDS.indexOf(dataFromChild[i]) == -1){
+  //    	 	console.log("YES")
+  //    	 	brainIDS.push(dataFromChild[i]);
+  //    	}
+  //        // brainIDS.push(dataFromChild[i]);
+  //      // }
+  //    	}
+  // 	}
+  	// console.log(dataFromChild);
+		// console.log(brainIDS);
+		this.setState({ 
+			clickedBrainIDs: dataFromChild
+		});
+
+		// console.log(dataFromChild);
+	}
+
+	// getAttQ_ID = (dataFromChild) => {
+	// 	this.setState({ 
+	// 		clickedAttQ_ID: dataFromChild 
+	// 	});
+	// }
+
+	// pass clicked Q_ID to app
 	myFunc = () => {
 		// this.setQ1Answer;
-		this.props.callBackFromParent(this.state.clickedQ_ID);
+		this.props.sendBrain(this.state.clickedBrainIDs);
+		// this.props.AdlIDs(this.state.clickedAdlQ_ID);
+		// this.props.AttIDs(this.state.clickedAttQ_ID);
 	}
 
 	render() {
+
 		var categoriesList;  
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 
@@ -86,17 +138,17 @@ class CatList extends Component {
 			categoriesList = ['Activities of Daily Living', 'Behavior', 'Impulse', 'Risk', 'Ritual', 'Self-harm', 'Substance'];
 		}
 
-		return (
-			<div>
+		return(	<div>
 				<div className = "categoriesCon">
 					{categoriesList.map((x, i) => 
 						<Category name = {x} key = {i} sendCat = {this.getCat}/>)	
 					}
 				</div>
+	
 				<div>
-					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getQ_ID}/>} 
+					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getBrainQ_ID}/>} 
 					{this.state.clickedCatName == "Attachment" && <AttachmentQ/>}  
-					{this.state.clickedCatName == "Attention" && <AttentionQ/>}
+					{this.state.clickedCatName == "Attention" && <AttentionQ sendQ_ID = {this.getBrainQ_ID}/>}
 					{this.state.clickedCatName == "Behavior" && <BehaviorQ/>}
 					{this.state.clickedCatName == "Cognitive Development" && <CogDevQ/>}
 					{this.state.clickedCatName == "Communication" && <CommunicationQ/>}
@@ -118,10 +170,11 @@ class CatList extends Component {
 					{this.state.clickedCatName == "Somatic" && <SomaticQ/>}
 					{this.state.clickedCatName == "Substance" && <SubstanceQ/>}
 					{this.state.clickedCatName == "Thought" && <ThoughtQ/>}
-
 				</div>
+			
 			</div>
-		)
+			)
+	 
 	}	
 }
 

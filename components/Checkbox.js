@@ -16,10 +16,16 @@ class Checkbox extends Component {
     })
   }
 
+  checkFunc = () => {
+    this.checkCheckbox();
+    // this.props.onCheck();
+    this.props.callBackFromParent(this.props.q_ID);
+  }
+
   render() {
     return(
       <div>
-        <input type="checkbox" id = {this.props.q_ID} value = {this.props.value} onChange = {this.checkCheckbox} /> 
+        <input type="checkbox" id = {this.props.q_ID} value = {this.props.value} onChange = {this.checkFunc} /> 
         {this.props.name}
       </div>
     )

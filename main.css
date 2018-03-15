@@ -114,4 +114,18 @@ body {
   height: 500px;
   width: 300px;
   overflow: auto;
+  padding: 5px;
 }
+
+/*.something{
+  color:red;
+}
+
+.qbox{
+  visibility: hidden;
+}
+
+.qbox2{
+  visibility: visible;
+}*/
+ 
