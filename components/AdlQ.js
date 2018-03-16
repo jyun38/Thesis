@@ -45,8 +45,14 @@ class AdlQ extends Component {
 		this.props.sendQ_ID(this.state.clickedQ_ID);
 	}
 
+
 	render() {
-		// console.log(this.state.clickedQ_ID)
+		// console.log("CHOSEN IDs: ", this.props.chosenID);
+		// var chosen = new Set(this.props.chosenID);
+		// console.log(chosen);
+		// if(chosen.has("q_2")){
+		// 	console.log("YEP.");
+		// }
 		return(
 			<div className = "questionsCon adlQ"> 
 				<div className = "questions"> 
@@ -67,7 +73,7 @@ class AdlQ extends Component {
 	        <Checkbox q_ID = {"q_5"} name = {"work, such as scheduling, organizing events, solving problems, and working with co-workers"}
 	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_6"} name = {"with interacting and communicating with others"} 
-	        	callBackFromParent = {this.adlCallBack}/>
+	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_7"} name = {"recreational activities, such as participating in outdoor activities, watching movies, and listening to music"}
 	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_8"} name = {"academic functioning, such as memory, reasoning, and comprehension"}

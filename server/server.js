@@ -40,40 +40,32 @@ app.get('/', function(req, res){
 })
 
 databaseQuery = (req, res) => {
-	if(req.body.id != null){
-		var MYIDS = JSON.parse(req.body.id, "");
- 		var query = connection.query('SELECT DISTINCT symptom, question_ID FROM MentalHealth.questions_tbl LEFT JOIN symptom_tbl ON questions_tbl.SE_ID = symptom_tbl.symptom_ID WHERE SymptomOrEvidence = "S" AND question_ID IN (?);',
-		[MYIDS],
-		function(error, results, fields){
-			if (error) throw error;
-			newResults = JSON.stringify(results);
-		});
-	}
+
+	var MYIDS = JSON.parse(req.body.id, "");
+		var query = connection.query('SELECT DISTINCT symptom, question_ID FROM MentalHealth.questions_tbl LEFT JOIN symptom_tbl ON questions_tbl.SE_ID = symptom_tbl.symptom_ID WHERE SymptomOrEvidence = "S" AND question_ID IN (?);',
+	[MYIDS],
+	function(error, results, fields){
+		if (error) throw error;
+		newResults = JSON.stringify(results);
+	});
+	
 }
 
 router.post('/res2', (req,res) => {
-	if(req!=null && res != null){
-		// console.log("yes");
-		databaseQuery(req, res);
-	}
-	else{
-		throw error;
-	}
+
+	databaseQuery(req, res);
+
 })
 
 router.get('/res2', function(req,res,next){
-	if(req!=null && res!=null){
-		var obj = {table:[]};
-		// console.log(newResults);
-		obj.table.push(newResults);
-		// console.log(obj);
-		// var json = JSON.stringify(obj);
-		res.send(obj);
-	}
-	else{
-		throw error;
+	var obj = {table:[]};
+	// console.log(newResults);
+	obj.table.push(newResults);
+	// console.log(obj);
+	// var json = JSON.stringify(obj);
+	res.send(obj);
 	
- 	}
+
 })
 
 //localhost 4000

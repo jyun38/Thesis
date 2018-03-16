@@ -31,14 +31,15 @@ import $ from 'jquery';
 
 // var brainIDS = '';
 // var brainIDs = new Set();
+
 var adl = new Set();
 var att = new Set();
 var maybe = [];
 var brainIDS = [];
+
 class CatList extends Component {
 
 	constructor(props) {
-
 		super(props);
 		// console.log(this.props);
 		this.state = {
@@ -69,46 +70,46 @@ class CatList extends Component {
 
 	// get clicked Q_ID
 	getBrainQ_ID = (dataFromChild) => {
-
 		if(dataFromChild != null){
+			// console.log(dataFromChild);
+
 			if(this.state.clickedCatName == "Activities of Daily Living"){
-				for(var i=0; i<dataFromChild.length; i++){
-					adl.add(dataFromChild[i]);
-				}
+
+				adl = new Set(dataFromChild);
 			}
 
 			else if(this.state.clickedCatName == "Attention"){
-				for(var j=0; j<dataFromChild.length; j++){
-					att.add(dataFromChild[j]);
-				}
-				
+				att = new Set(dataFromChild);
 			}
-			// console.log("ATT: ", att);
-			// console.log("ADL: ", adl);
-			adl.forEach(att.add, att);
-			// console.log("MERGED: ", att);
-			// console.log(dataFromChild);
 
+			var totalQs = new Set();
+			for (let elem of adl){
+				totalQs.add(elem)
+			}
+
+			for(let elem of att){
+				totalQs.add(elem)
+			}
+
+			this.setState({ 
+				clickedBrainIDs: Array.from(totalQs)
+			});
 		}
 
 		
 		// console.log(dataFromChild);
 		// console.log("STRINGIFIED: ", JSON.stringify(dataFromChild));
-		this.setState({ 
-			clickedBrainIDs: Array.from(att)
-		});
+		
 	}
 
 	// pass clicked Q_ID to app
 	myFunc = () => {
-		// this.setQ1Answer;
 		this.props.sendBrain(this.state.clickedBrainIDs);
-		// this.props.AdlIDs(this.state.clickedAdlQ_ID);
-		// this.props.AttIDs(this.state.clickedAttQ_ID);
 	}
 
 	render() {
-		var categoriesList;  
+		var categoriesList; 
+		// var maybe = Array.from(adl); 
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 
 			'Delusion/Hallucination', 'Impulse', 'Judgment', 'Orientation', 'Thought'];
@@ -136,7 +137,8 @@ class CatList extends Component {
 				</div>
 	
 				<div>
-					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getBrainQ_ID}/>} 
+					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getBrainQ_ID}
+						/>} 
 					{this.state.clickedCatName == "Attachment" && <AttachmentQ/>}  
 					{this.state.clickedCatName == "Attention" && <AttentionQ sendQ_ID = {this.getBrainQ_ID}/>}
 					{this.state.clickedCatName == "Behavior" && <BehaviorQ/>}

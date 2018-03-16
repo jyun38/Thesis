@@ -8,6 +8,7 @@ class Checkbox extends Component {
     this.state = {
       isChecked: false
     }
+    // console.log(this.props);
   }
 
   checkCheckbox = () => {

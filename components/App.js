@@ -36,7 +36,7 @@ class App extends Component {
 	 						// idData = value.table[0];
 	 						
 	 						idData = value.table[0]
-	 						console.log(idData);
+	 						// console.log(idData);
 	 						// console.log(idData.length);
 	 						resultSet=[];
 	 						for(var i=0; i<idData.length; i++){
