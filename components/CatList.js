@@ -31,7 +31,9 @@ import $ from 'jquery';
 
 // var brainIDS = '';
 // var brainIDs = new Set();
-
+var adl = new Set();
+var att = new Set();
+var maybe = [];
 var brainIDS = [];
 class CatList extends Component {
 
@@ -67,46 +69,35 @@ class CatList extends Component {
 
 	// get clicked Q_ID
 	getBrainQ_ID = (dataFromChild) => {
-		// console.log(dataFromChild)
-		// console.log(typeof(dataFromChild));
-		// brainIDs.clear(); 
-		// if(dataFromChild != null){
-		// 			for (var i = 0; i<dataFromChild.length; i++){
-		// 	brainIDs.add(dataFromChild[i]);
-	
-		// }
-		// }
 
+		if(dataFromChild != null){
+			if(this.state.clickedCatName == "Activities of Daily Living"){
+				for(var i=0; i<dataFromChild.length; i++){
+					adl.add(dataFromChild[i]);
+				}
+			}
+
+			else if(this.state.clickedCatName == "Attention"){
+				for(var j=0; j<dataFromChild.length; j++){
+					att.add(dataFromChild[j]);
+				}
+				
+			}
+			// console.log("ATT: ", att);
+			// console.log("ADL: ", adl);
+			adl.forEach(att.add, att);
+			// console.log("MERGED: ", att);
+			// console.log(dataFromChild);
+
+		}
+
+		
 		// console.log(dataFromChild);
-		// console.log(brainIDs);
-		// if(dataFromChild != null){
-		// 	// console.log("IN HERE");
-  //    for(var i=0; i<dataFromChild.length; i++){
-  //    		// console.log("IN FOR LOOP");
-  //      // if(brainIDS.indexOf(dataFromChild[i]) == -1){
-  //      	 // console.log("ADDING ELEMENTS");
-  //    	if(brainIDS.indexOf(dataFromChild[i]) == -1){
-  //    	 	console.log("YES")
-  //    	 	brainIDS.push(dataFromChild[i]);
-  //    	}
-  //        // brainIDS.push(dataFromChild[i]);
-  //      // }
-  //    	}
-  // 	}
-  	// console.log(dataFromChild);
-		// console.log(brainIDS);
+		// console.log("STRINGIFIED: ", JSON.stringify(dataFromChild));
 		this.setState({ 
-			clickedBrainIDs: dataFromChild
+			clickedBrainIDs: Array.from(att)
 		});
-
-		// console.log(dataFromChild);
 	}
-
-	// getAttQ_ID = (dataFromChild) => {
-	// 	this.setState({ 
-	// 		clickedAttQ_ID: dataFromChild 
-	// 	});
-	// }
 
 	// pass clicked Q_ID to app
 	myFunc = () => {
@@ -117,7 +108,6 @@ class CatList extends Component {
 	}
 
 	render() {
-
 		var categoriesList;  
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 

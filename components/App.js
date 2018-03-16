@@ -6,8 +6,10 @@ import CatList from './CatList.js'
 import AdlQ from './AdlQ.js'
 import ajax from 'jquery';
 import $ from 'jquery';
+
 var idData ='';
- 
+var resultSet=[];
+
 class App extends Component {
 	constructor(){
 		super();
@@ -27,32 +29,45 @@ class App extends Component {
 	 			let rawData = response.json();
 	 			rawData.then(function(value){
 	 				if(typeof(value) != 'undefined' && value != null){
-	 					console.log("...........yay");
+
 	 					if(value.table[0]!= null){
 	 						value.table[0] = JSON.parse(value.table[0])
+	 						// console.log(value.table[0]);
 	 						// idData = value.table[0];
-	 						idData = value.table[0][0]
+	 						
+	 						idData = value.table[0]
+	 						console.log(idData);
+	 						// console.log(idData.length);
+	 						resultSet=[];
+	 						for(var i=0; i<idData.length; i++){
+	 							resultSet.push(idData[i].symptom);
+	 						}
+	 						// resultSet.join("\r\n");
+	 						// resultSet.join('\r\n');
+	 						// console.log(typeof(resultSet));
+	 						// console.log(typeof(value));
+	 						// console.log(value);
 	 					}
 	 				}
 	 			})
 	 		})
-	 	this.setState({
-	 		result: JSON.stringify(idData)
-	 	});
+	 		this.setState({
+	 			result: JSON.stringify(idData)
+	 		});
  }
 
  	ajaxPost = () =>{
  		console.log("Sending IDs...");
  		var all_ID = [];
  		all_ID.push(this.state.receivedBrain);
- 		// all_ID.push(this.state.another);
  		console.log("PRINT " + all_ID);
- 	
-		$.ajax({
-			url: '/res2',
-			type: 'POST',
-			data: {id: all_ID}
-		}).then(this.extractData());		
+ 		if(all_ID != null){
+ 			$.ajax({
+				url: '/res2',
+				type: 'POST',
+				data: {id: all_ID}
+			});	
+ 		}
  	}
 
 	giveCat = (domainName) => {
@@ -71,7 +86,6 @@ class App extends Component {
 	}
 
 	render() {
-
 		return (
 			<div>
 				<div className = "domainsCon">
@@ -90,8 +104,15 @@ class App extends Component {
 				</div>
 				<div>
 					<button onClick={this.ajaxPost}>
-						Get diagnosis
+						FINALIZE ANSWERS
 					</button>
+					<button onClick={this.extractData}>
+						QUERY DATABASE
+					</button>
+					<button onClick={this.extractData}>
+						SHOW RESULT
+					</button>
+
 				</div>
 				<div className="result">
 					{this.state.result}

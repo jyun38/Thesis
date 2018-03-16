@@ -41,7 +41,7 @@ class AttentionQ extends Component {
 
   attAnswer = () => {
 		//send clicked Q_ID to App
-		// this.props.sendQ_ID(this.state.clickedQ_ID);
+		this.props.sendQ_ID(this.state.clickedQ_ID);
 	}
 
 	// countAll = () => {
@@ -53,9 +53,9 @@ class AttentionQ extends Component {
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any hyperactive-impulsive symptom?
-	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" callBackFromParent = {this.attCallBack} onAnswer = {this.attAnswer} />
-	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" callBackFromParent = {this.attCallBack} onAnswer = {this.attAnswer}/> 
-	        <Radio q_ID = {"q_15"} txt = {"Not enough information"} name = "1" callBackFromParent = {this.attCallBack} onAnswer = {this.attAnswer}/>
+	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" callBackFromParent = {this.attCallBack}/>
+	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" callBackFromParent = {this.attCallBack}/> 
+	        <Radio q_ID = {"q_15"} txt = {"Not enough information"} name = "1" callBackFromParent = {this.attCallBack}/>
 	      </div>
 	      <br/>
       </div>

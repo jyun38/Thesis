@@ -10,7 +10,7 @@ class Radio extends Component {
   }
 
   myFunc = () => {
-    this.props.onAnswer();
+    // this.props.onAnswer();
     //send q_ID of radio button
     this.props.callBackFromParent(this.props.q_ID);
   }

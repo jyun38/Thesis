@@ -18,7 +18,7 @@ class AdlQ extends Component {
 	componentDidMount() {
     this.loadInterval = setInterval(
       () => this.adlAnswer(),
-      0.0001
+      0.001
     );
   }
 
@@ -35,7 +35,6 @@ class AdlQ extends Component {
 		else{
 			ADLIDS.push(dataFromChild);
 		}
-		
 		this.setState({ 
 			clickedQ_ID: ADLIDS
 		});
@@ -52,27 +51,27 @@ class AdlQ extends Component {
 			<div className = "questionsCon adlQ"> 
 				<div className = "questions"> 
 					Does the client use any mind-altering substances such as Cannabis, Hallucinogen, and Phencyclidine? <br/>
-	        <Radio q_ID = {"q_1"} txt = {"Yes"} name = "1" callBackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer} />
-	        <Radio q_ID = {"q_1"} txt = {"No"} name = "1" callBackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer}/> 
-	        <Radio q_ID = {"q_1"} txt = {"Not enough information"} name = "1" callBackFromParent = {this.adlCallBack} onAnswer = {this.adlAnswer}/>
+	        <Radio q_ID = {"q_1"} txt = {"Yes"} name = "1" callBackFromParent = {this.adlCallBack}/>
+	        <Radio q_ID = {"q_1"} txt = {"No"} name = "1" callBackFromParent = {this.adlCallBack}/> 
+	        <Radio q_ID = {"q_1"} txt = {"Not enough information"} name = "1" callBackFromParent = {this.adlCallBack}/>
 	      </div>
 	      <br/>
 	      <div className = "questions">
 	      	The client encounters difficulties with: (choose more than one if necessary)<br/>
 	        <Checkbox q_ID = {"q_2"} name = {"personal care, such as eating, dressing, elimination, and hygiene"}
-	        callBackFromParent = {this.adlCallBack} />
+	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_3"} name = {"making decisions"} 
-	        callBackFromParent = {this.adlCallBack} />
+	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_4"} name = {"household tasks, such as taking care of children, grocery shopping, transportation, and money management"}
-	        callBackFromParent = {this.adlCallBack} />	        	        	        
+	        	callBackFromParent = {this.adlCallBack} />	        	        	        
 	        <Checkbox q_ID = {"q_5"} name = {"work, such as scheduling, organizing events, solving problems, and working with co-workers"}
-	        callBackFromParent = {this.adlCallBack} />
+	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_6"} name = {"with interacting and communicating with others"} 
-	        callBackFromParent = {this.adlCallBack}/>
+	        	callBackFromParent = {this.adlCallBack}/>
 	        <Checkbox q_ID = {"q_7"} name = {"recreational activities, such as participating in outdoor activities, watching movies, and listening to music"}
-	        callBackFromParent = {this.adlCallBack} />
+	        	callBackFromParent = {this.adlCallBack} />
 	        <Checkbox q_ID = {"q_8"} name = {"academic functioning, such as memory, reasoning, and comprehension"}
-	        callBackFromParent = {this.adlCallBack} />
+	        	callBackFromParent = {this.adlCallBack} />
 	      </div>
       </div>
  		)
