@@ -3,146 +3,151 @@ import '../main.css'
 import Radio from './Radio.js'
 import $ from 'jquery'; 
 
+var CATIDS = [];
+var arr = {};
+
 class BehaviorQ extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			question1Choice: null, 
-			question2Choice: null, 
-			question3Choice: null,
-			question4Choice: null,
-			question5Choice: null,
-			question6Choice: null,
-			question7Choice: null,
-			question8Choice: null
+			checkedIDs: null,
+			radioIDs: null
 		}
 	}
 
-	setQ1Answer = (e) => {
-		this.setState({
-			question1Choice: e.target.value
-		});
-	}
+	componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.myAnswer(),
+      0.001
+    );
+  }
 
-	setQ2Answer = (e) => {
-		this.setState({
-			question2Choice: e.target.value
-		});
-	}
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
 
-	setQ3Answer = (e) => {
-		this.setState({
-			question3Choice: e.target.value
-		});
-	}
+	myRadio = (id, value) => {
+  	if(id != null && value != null){
+			arr[id] = value; 
 
-	setQ4Answer = (e) => {
-		this.setState({
-			question4Choice: e.target.value
-		});
-	}
+			// element already in array
+			if(CATIDS.indexOf(id) != -1){
+				if(value == "No"){
+					CATIDS.splice(CATIDS.indexOf(id), 1);
+				}
+			}
+			// element not in array
+			else{
+				if(value != "No"){
+					CATIDS.push(id);
+				}	
+			}
 
-	setQ5Answer = (e) => {
-		this.setState({
-			question5Choice: e.target.value
-		});
-	}
+			console.log(arr);
+			this.setState({ 
+				checkedIDs: CATIDS
+			});	
+			// console.log(arr);
+			this.setState({
+				radioIDs: arr
+			});
+		}
+  }
 
-	setQ6Answer = (e) => {
-		this.setState({
-			question6Choice: e.target.value
-		});
-	}
-
-	setQ7Answer = (e) => {
-		this.setState({
-			question7Choice: e.target.value
-		});
-	}
-
-	setQ8Answer = (e) => {
-		this.setState({
-			question8Choice: e.target.value
-		});
-	}
-
-
-	countAll = () => {
-		console.log(this.state);
-		// console.log("question 1 : ", this.state.question1Choice);
-		// console.log("question 2 : ", this.state.question2Choice);
- 	// 	console.log("question 3 : ", this.state.question3Choice);
-	 // 	console.log("question 4 : ", this.state.question4Choice);
- 	// 	console.log("question 5 : ", this.state.question5Choice);
- 	// 	console.log("question 6 : ", this.state.question6Choice);
- 	// 	console.log("question 7 : ", this.state.question7Choice); 
- 	// 	console.log("question 8 : ", this.state.question8Choice); 
-	}
+  myAnswer = () => {
+		//send clicked Q_ID to App
+		this.props.sendQ_ID(this.state.checkedIDs);
+		this.props.sendRadio_ID(this.state.radioIDs);
+	}  
 
 	render() {
+		var radioSet = new Set(this.props.backRadio_ID);
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client use any mind-altering substances such as Cannabis, Opioid, Hallucinogen, Phencyclidine, 
 					and Cocaine?
-	        <Radio q_ID = {"q_16"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio q_ID = {"q_16"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio q_ID = {"q_16"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+	        <Radio q_ID = {"q_16"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_16-Yes")}/>
+	        <Radio q_ID = {"q_16"} txt = {"No"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_16-No")}/> 
+	        <Radio q_ID = {"q_16"} txt = {"Not enough information"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_16-Not enough information")}/>
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have excessive concerns about his/her/their physical health?
-	      	<Radio q_ID = {"q_17"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio q_ID = {"q_17"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio q_ID = {"q_17"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_17"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
+	      		status = {radioSet.has("q_17-Yes")}/>
+	        <Radio q_ID = {"q_17"} txt = {"No"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_17-No")}/> 
+	        <Radio q_ID = {"q_17"} txt = {"Not enough information"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_17-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client behave differently compared to others? (E.g. acting solitarily, passaging feces into 
 		      	inappropriate places)
-		      <Radio q_ID = {"q_18"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio q_ID = {"q_18"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio q_ID = {"q_18"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_18"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_18-Yes")}/>
+		      <Radio q_ID = {"q_18"} txt = {"No"} name = "3" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_18-No")}/> 
+		      <Radio q_ID = {"q_18"} txt = {"Not enough information"} name = "3" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_18-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client demonstrate rigidity or stubbornness? (E.g. restricted patterns of behavior, repetitive movements)
-					<Radio q_ID = {"q_19"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-		      <Radio q_ID = {"q_19"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-		      <Radio q_ID = {"q_19"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
+					<Radio q_ID = {"q_19"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_19-Yes")}/>
+		      <Radio q_ID = {"q_19"} txt = {"No"} name = "4" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_19-No")}/> 
+		      <Radio q_ID = {"q_19"} txt = {"Not enough information"} name = "4" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_19-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have any abnormal eating behavior, such as binge eating and purging?
-					<Radio q_ID = {"q_20"} txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
-		      <Radio q_ID = {"q_20"} txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
-		      <Radio q_ID = {"q_20"} txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
+					<Radio q_ID = {"q_20"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_20-Yes")}/>
+		      <Radio q_ID = {"q_20"} txt = {"No"} name = "5" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_20-No")}/> 
+		      <Radio q_ID = {"q_20"} txt = {"Not enough information"} name = "5" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_20-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client encounter any difficulties in adjusting to certain situations? (E.g. aggression, 
 						self-injury)
-		      <Radio q_ID = {"q_21"} txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
-		      <Radio q_ID = {"q_21"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
-		      <Radio q_ID = {"q_21"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_21"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_21-Yes")}/>
+		      <Radio q_ID = {"q_21"} txt = {"No"} name = "6" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_21-No")}/> 
+		      <Radio q_ID = {"q_21"} txt = {"Not enough information"} name = "6" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_21-Not enough information")}/> 
 		    </div>
 		    <br/>
 		    <div className = "questions">
 					Does the client have any abnormal behavior while interacting with others? (E.g. communicative deficits, 
 						deception)
-		      <Radio q_ID = {"q_22"} txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
-		      <Radio q_ID = {"q_22"} txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
-		      <Radio q_ID = {"q_22"} txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
+		      <Radio q_ID = {"q_22"} txt = {"Yes"} name = "7" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_22-Yes")}/>
+		      <Radio q_ID = {"q_22"} txt = {"No"} name = "7" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_22-No")}/> 
+		      <Radio q_ID = {"q_22"} txt = {"Not enough information"} name = "7" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_22-Not enough information")} /> 
 		    </div>
 		    <br/>
 		    <div className = "questions">
 					Does the client have any aggressive behavior, including physical or verbal aggression?
-		      <Radio q_ID = {"q_23"} txt = {"Yes"} name = "8" onAnswer = {this.setQ8Answer}/>
-		      <Radio q_ID = {"q_23"} txt = {"No"} name = "8" onAnswer = {this.setQ8Answer}/> 
-		      <Radio q_ID = {"q_23"} txt = {"Not enough information"} name = "8" onAnswer = {this.setQ8Answer}/> 
+		      <Radio q_ID = {"q_23"} txt = {"Yes"} name = "8" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_23-Yes")}/>
+		      <Radio q_ID = {"q_23"} txt = {"No"} name = "8" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_23-No")}/> 
+		      <Radio q_ID = {"q_23"} txt = {"Not enough information"} name = "8" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_23-Not enough information")}/> 
 		    </div>
-				<button onClick={this.countAll}>{"Done"}</button>
       </div>
 		)
 	}

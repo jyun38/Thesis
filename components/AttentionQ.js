@@ -5,57 +5,75 @@ import Checkbox from './Checkbox.js'
 import Radio from './Radio.js'
 import $ from 'jquery'; 
 
-var ATTIDS = [];
+var CATIDS = [];
+var arr = {};
 
 class AttentionQ extends Component {
 
 	constructor(props){
 		super(props);
 		this.state = {
-			question1Choice: null,
-			clickedQ_ID: null
+			checkedIDs: null,
+			radioIDs: null
 		}	
 	}
 
-	// setQ1Answer = (e) => {
-	// 	this.setState({
-	// 		question1Choice: e.target.value
-	// 	});
-	// }
-
 	componentDidMount() {
     this.loadInterval = setInterval(
-      () => this.attAnswer(),
-      0.0001
+      () => this.myAnswer(),
+      0.001
     );
   }
 
-	attCallBack = (dataFromChild) => {
-		if(ATTIDS.indexOf(dataFromChild) == -1){
-			ATTIDS.push(dataFromChild);
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
+
+  myRadio = (id, value) => {
+  	if(id != null && value != null){
+			arr[id] = value; 
+
+			// element already in array
+			if(CATIDS.indexOf(id) != -1){
+				if(value == "No"){
+					CATIDS.splice(CATIDS.indexOf(id), 1);
+				}
+			}
+			// element not in array
+			else{
+				if(value != "No"){
+					CATIDS.push(id);
+				}	
+			}
+			this.setState({ 
+				checkedIDs: CATIDS
+			});	
+			// console.log(arr);
+			this.setState({
+				radioIDs: arr
+			});
 		}
-		this.setState({ 
-			clickedQ_ID: ATTIDS
-		});
-	}
+  }
 
-  attAnswer = () => {
+  myAnswer = () => {
 		//send clicked Q_ID to App
-		this.props.sendQ_ID(this.state.clickedQ_ID);
+		this.props.sendQ_ID(this.state.checkedIDs);
+		this.props.sendRadio_ID(this.state.radioIDs);
 	}
-
-	// countAll = () => {
-	// 	console.log("question 1 : ", this.state.question1Choice);
-	// }
 
 	render() {
+		var radioSet = new Set(this.props.backRadio_ID);
+
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any hyperactive-impulsive symptom?
-	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" callBackFromParent = {this.attCallBack}/>
-	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" callBackFromParent = {this.attCallBack}/> 
-	        <Radio q_ID = {"q_15"} txt = {"Not enough information"} name = "1" callBackFromParent = {this.attCallBack}/>
+	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
+	        	status = {radioSet.has("q_15-Yes")}/>
+	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" sendValue = {this.myRadio} 
+	        	status = {radioSet.has("q_15-No")}/> 
+	        <Radio q_ID = {"q_15"} txt = {"Not enough information"} name = "1" sendValue = {this.myRadio} 
+	        	status = {radioSet.has("q_15-Not enough information")}/>
 	      </div>
 	      <br/>
       </div>

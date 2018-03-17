@@ -33,9 +33,14 @@ import $ from 'jquery';
 // var brainIDs = new Set();
 
 var adl = new Set();
-var att = new Set();
 var adlRadio = new Set();
-var allAdl = [];
+var att = new Set();
+var attRadio = new Set();
+
+var behavior = new Set();
+var behaviorRadio = new Set();
+
+// var allAdl = [];
 var brainIDS = [];
 
 class CatList extends Component {
@@ -82,6 +87,10 @@ class CatList extends Component {
 				att = new Set(dataFromChild);
 			}
 
+			else if(this.state.clickedCatName == "Behavior"){
+				behavior = new Set(dataFromChild);
+			}
+
 			var totalQs = new Set();
 			for (let elem of adl){
 				totalQs.add(elem)
@@ -91,14 +100,14 @@ class CatList extends Component {
 				totalQs.add(elem)
 			}
 
+			for(let elem of behavior){
+				totalQs.add(elem)
+			}
 			this.setState({ 
 				clickedBrainIDs: Array.from(totalQs)
 			});
 		}
 
-		// console.log(dataFromChild);
-		// console.log("STRINGIFIED: ", JSON.stringify(dataFromChild));
-		
 	}
 
 	radioIDs = (data) => {
@@ -108,13 +117,27 @@ class CatList extends Component {
 			if(this.state.clickedCatName == "Activities of Daily Living"){
 				adlRadio = data;
 			}
-
+			else if(this.state.clickedCatName == "Attention"){
+				attRadio = data;
+			}
+			else if(this.state.clickedCatName == "Behavior"){
+				behaviorRadio = data;
+			}
 			var totalRadioQs = new Set();
-			for (var key in adlRadio){
+			for(var key in adlRadio){
 				// console.log(adlRadio[key])
 				totalRadioQs.add(key+"-"+adlRadio[key]);
 			}
 
+			for(var key in attRadio){
+				totalRadioQs.add(key+"-"+attRadio[key]);
+			}
+
+			for(var key in behaviorRadio){
+				totalRadioQs.add(key+"-"+behaviorRadio[key]);
+			}
+
+			// put all the clicked radio IDs into clickedRadioIDs state
 			this.setState({
 				clickedRadioIDs: Array.from(totalRadioQs)
 			})
@@ -127,8 +150,18 @@ class CatList extends Component {
 
 	render() {
 		var categoriesList; 
+		// array containing all clicked adl IDs
 		var allAdl = Array.from(adl); 
+		// array containing all clicked adl radio IDs
 		var allAdlRadio = Array.from(adlRadio);
+		// array containing all clicked attention IDs
+		var allAtt = Array.from(att);
+		// array containing all clicked attention radio IDs
+		var allAttRadio = Array.from(attRadio);
+
+		var allBehavior = Array.from(behavior);
+		var allBehaviorRadio = Array.from(behaviorRadio);
+
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 
 			'Delusion/Hallucination', 'Impulse', 'Judgment', 'Orientation', 'Thought'];
@@ -156,11 +189,17 @@ class CatList extends Component {
 				</div>
 	
 				<div>
-					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getBrainQ_ID}
-						chosen_ID = {allAdl} sendRadio_ID = {this.radioIDs} backRadio_ID = {this.state.clickedRadioIDs}/>} 
-					{this.state.clickedCatName == "Attachment" && <AttachmentQ/>}  
-					{this.state.clickedCatName == "Attention" && <AttentionQ sendQ_ID = {this.getBrainQ_ID}/>}
-					{this.state.clickedCatName == "Behavior" && <BehaviorQ/>}
+					{this.state.clickedCatName == "Activities of Daily Living" && 
+						<AdlQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allAdl} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {this.state.clickedRadioIDs}/>} 
+					{this.state.clickedCatName == "Attachment" && 
+						<AttachmentQ/>}  
+					{this.state.clickedCatName == "Attention" && 
+						<AttentionQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allAtt} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {this.state.clickedRadioIDs}/>}
+					{this.state.clickedCatName == "Behavior" && 
+						<BehaviorQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allBehavior} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {this.state.clickedRadioIDs}/>}
 					{this.state.clickedCatName == "Cognitive Development" && <CogDevQ/>}
 					{this.state.clickedCatName == "Communication" && <CommunicationQ/>}
 					{this.state.clickedCatName == "Delusion/Hallucination" && <DelHalQ/>}
