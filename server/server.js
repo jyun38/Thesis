@@ -42,6 +42,7 @@ app.get('/', function(req, res){
 databaseQuery = (req, res) => {
 
 	var MYIDS = JSON.parse(req.body.id, "");
+	console.log(typeof(MYIDS))
 		var query = connection.query('SELECT DISTINCT symptom, question_ID FROM MentalHealth.questions_tbl LEFT JOIN symptom_tbl ON questions_tbl.SE_ID = symptom_tbl.symptom_ID WHERE SymptomOrEvidence = "S" AND question_ID IN (?);',
 	[MYIDS],
 	function(error, results, fields){

@@ -34,7 +34,8 @@ import $ from 'jquery';
 
 var adl = new Set();
 var att = new Set();
-var maybe = [];
+var adlRadio = new Set();
+var allAdl = [];
 var brainIDS = [];
 
 class CatList extends Component {
@@ -74,7 +75,6 @@ class CatList extends Component {
 			// console.log(dataFromChild);
 
 			if(this.state.clickedCatName == "Activities of Daily Living"){
-
 				adl = new Set(dataFromChild);
 			}
 
@@ -96,12 +96,30 @@ class CatList extends Component {
 			});
 		}
 
-		
 		// console.log(dataFromChild);
 		// console.log("STRINGIFIED: ", JSON.stringify(dataFromChild));
 		
 	}
 
+	radioIDs = (data) => {
+		// console.log("DATA: ", data);
+		if(data != null){
+			// console.log("NOT NULL");
+			if(this.state.clickedCatName == "Activities of Daily Living"){
+				adlRadio = data;
+			}
+
+			var totalRadioQs = new Set();
+			for (var key in adlRadio){
+				// console.log(adlRadio[key])
+				totalRadioQs.add(key+"-"+adlRadio[key]);
+			}
+
+			this.setState({
+				clickedRadioIDs: Array.from(totalRadioQs)
+			})
+		}
+	}
 	// pass clicked Q_ID to app
 	myFunc = () => {
 		this.props.sendBrain(this.state.clickedBrainIDs);
@@ -109,7 +127,8 @@ class CatList extends Component {
 
 	render() {
 		var categoriesList; 
-		// var maybe = Array.from(adl); 
+		var allAdl = Array.from(adl); 
+		var allAdlRadio = Array.from(adlRadio);
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 
 			'Delusion/Hallucination', 'Impulse', 'Judgment', 'Orientation', 'Thought'];
@@ -138,7 +157,7 @@ class CatList extends Component {
 	
 				<div>
 					{this.state.clickedCatName == "Activities of Daily Living" && <AdlQ sendQ_ID = {this.getBrainQ_ID}
-						/>} 
+						chosen_ID = {allAdl} sendRadio_ID = {this.radioIDs} backRadio_ID = {this.state.clickedRadioIDs}/>} 
 					{this.state.clickedCatName == "Attachment" && <AttachmentQ/>}  
 					{this.state.clickedCatName == "Attention" && <AttentionQ sendQ_ID = {this.getBrainQ_ID}/>}
 					{this.state.clickedCatName == "Behavior" && <BehaviorQ/>}
