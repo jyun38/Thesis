@@ -30,6 +30,11 @@ body {
   float: left;
 }
 
+/*button{
+  border-color: black; 
+  border-width: 2;
+}*/
+
 .button {
   border: 2px black;
   font-family: 'Alegreya Sans';
@@ -42,7 +47,17 @@ body {
   /*float: left;*/
   width: 100%;
   background-color: #82D8E5;
+
 }
+/*
+button:visited{
+  background-color: red; 
+}
+button:focus{
+  background-color: pink;
+}
+ */
+
 
 .categoriesCon{
   display: flex;
@@ -74,6 +89,8 @@ body {
   /*height: 30px;*/
   text-align: left;
 }
+
+ 
 
 .questionsCon{
   display: flex;

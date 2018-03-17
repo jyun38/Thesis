@@ -15,8 +15,6 @@ class App extends Component {
 		super();
     this.state = {
     	clickedDomain: null,
-    	AdlQ_ID: null, 
-    	AttentionQ_ID: null,
     	receivedBrain: null,
     	result: null
     };

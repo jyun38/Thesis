@@ -34,11 +34,18 @@ import $ from 'jquery';
 
 var adl = new Set();
 var adlRadio = new Set();
+
 var att = new Set();
 var attRadio = new Set();
 
 var behavior = new Set();
 var behaviorRadio = new Set();
+
+var cogdev = new Set();
+var cogdevRadio = new Set();
+
+var communication = new Set();
+var communicationRadio = new Set();
 
 // var allAdl = [];
 var brainIDS = [];
@@ -50,7 +57,6 @@ class CatList extends Component {
 		// console.log(this.props);
 		this.state = {
 			clickedCatName: null,
-			clickedAdlQ_ID: null,
 			clickedBrainIDs: null
 		};
 		// console.log(this.props);
@@ -91,6 +97,13 @@ class CatList extends Component {
 				behavior = new Set(dataFromChild);
 			}
 
+			else if(this.state.clickedCatName == "Cognitive Development"){
+				cogdev = new Set(dataFromChild);
+			}
+
+			else if(this.state.clickedCatName == "Communication"){
+				communication = new Set(dataFromChild);
+			}
 			var totalQs = new Set();
 			for (let elem of adl){
 				totalQs.add(elem)
@@ -103,6 +116,15 @@ class CatList extends Component {
 			for(let elem of behavior){
 				totalQs.add(elem)
 			}
+
+			for(let elem of cogdev){
+				totalQs.add(elem);
+			}
+
+			for(let elem of communication){
+				totalQs.add(elem);
+			}
+
 			this.setState({ 
 				clickedBrainIDs: Array.from(totalQs)
 			});
@@ -123,20 +145,34 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Behavior"){
 				behaviorRadio = data;
 			}
+			else if(this.state.clickedCatName == "Cognitive Development"){
+				cogdevRadio = data; 
+			}
+			else if(this.state.clickedCatName == "Communication"){
+				communicationRadio = data; 
+			}
+
 			var totalRadioQs = new Set();
-			for(var key in adlRadio){
+			for(let key in adlRadio){
 				// console.log(adlRadio[key])
 				totalRadioQs.add(key+"-"+adlRadio[key]);
 			}
 
-			for(var key in attRadio){
+			for(let key in attRadio){
 				totalRadioQs.add(key+"-"+attRadio[key]);
 			}
 
-			for(var key in behaviorRadio){
+			for(let key in behaviorRadio){
 				totalRadioQs.add(key+"-"+behaviorRadio[key]);
 			}
 
+			for(let key in cogdevRadio){
+				totalRadioQs.add(key+"-"+cogdevRadio[key]);
+			}
+
+			for(let key in communicationRadio){
+				totalRadioQs.add(key+"-"+communicationRadio[key]);
+			}
 			// put all the clicked radio IDs into clickedRadioIDs state
 			this.setState({
 				clickedRadioIDs: Array.from(totalRadioQs)
@@ -161,6 +197,12 @@ class CatList extends Component {
 
 		var allBehavior = Array.from(behavior);
 		var allBehaviorRadio = Array.from(behaviorRadio);
+
+		var allCogdev = Array.from(cogdev);
+		var allCogdevRadio = Array.from(cogdevRadio);
+
+		var allCommunication = Array.from(communication);
+		var allCommunicationRadio = Array.from(communicationRadio);
 
 		if(this.props.name == "Brain"){
 			categoriesList = ['Activities of Daily Living', 'Attention', 'Behavior', 'Cognitive Development', 'Communication', 
@@ -200,26 +242,48 @@ class CatList extends Component {
 					{this.state.clickedCatName == "Behavior" && 
 						<BehaviorQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allBehavior} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {this.state.clickedRadioIDs}/>}
-					{this.state.clickedCatName == "Cognitive Development" && <CogDevQ/>}
-					{this.state.clickedCatName == "Communication" && <CommunicationQ/>}
-					{this.state.clickedCatName == "Delusion/Hallucination" && <DelHalQ/>}
-					{this.state.clickedCatName == "Detachment" && <DetachmentQ/>}
-					{this.state.clickedCatName == "Eating" && <EatingQ/>}
-					{this.state.clickedCatName == "Feeling" && <FeelingQ/>}
-					{this.state.clickedCatName == "Inflicting Harm on Others" && <IhoQ/>}
-					{this.state.clickedCatName == "Impulse" && <ImpulseQ/>}
-					{this.state.clickedCatName == "Judgment" && <JudgmentQ/>}
-					{this.state.clickedCatName == "Motor" && <MotorQ/>}
-					{this.state.clickedCatName == "Orientation" && <OrientationQ/>}
-					{this.state.clickedCatName == "Risk" && <RiskQ/>}
-					{this.state.clickedCatName == "Ritual" && <RitualQ/>}
-					{this.state.clickedCatName == "Self-concept" && <SelfConceptQ/>}
-					{this.state.clickedCatName == "Self-harm" && <SelfHarmQ/>}
-					{this.state.clickedCatName == "Sensory" && <SensoryQ/>}
-					{this.state.clickedCatName == "Sleep" && <SleepQ/>}
-					{this.state.clickedCatName == "Somatic" && <SomaticQ/>}
-					{this.state.clickedCatName == "Substance" && <SubstanceQ/>}
-					{this.state.clickedCatName == "Thought" && <ThoughtQ/>}
+					{this.state.clickedCatName == "Cognitive Development" && 
+						<CogDevQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allCogdev} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {this.state.clickedRadioIDs}/>}
+					{this.state.clickedCatName == "Communication" && 
+						<CommunicationQ sendQ_ID = {this.getBrainQ_ID} chosen_ID = {allCommunication} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {this.state.clickedRadioIDs}/>}
+					{this.state.clickedCatName == "Delusion/Hallucination" && 
+						<DelHalQ/>}
+					{this.state.clickedCatName == "Detachment" && 
+						<DetachmentQ/>}
+					{this.state.clickedCatName == "Eating" && 
+						<EatingQ/>}
+					{this.state.clickedCatName == "Feeling" && 
+						<FeelingQ/>}
+					{this.state.clickedCatName == "Inflicting Harm on Others" && 
+						<IhoQ/>}
+					{this.state.clickedCatName == "Impulse" && 
+						<ImpulseQ/>}
+					{this.state.clickedCatName == "Judgment" && 
+						<JudgmentQ/>}
+					{this.state.clickedCatName == "Motor" && 
+						<MotorQ/>}
+					{this.state.clickedCatName == "Orientation" && 
+						<OrientationQ/>}
+					{this.state.clickedCatName == "Risk" && 
+						<RiskQ/>}
+					{this.state.clickedCatName == "Ritual" && 
+						<RitualQ/>}
+					{this.state.clickedCatName == "Self-concept" && 
+						<SelfConceptQ/>}
+					{this.state.clickedCatName == "Self-harm" && 
+						<SelfHarmQ/>}
+					{this.state.clickedCatName == "Sensory" && 
+						<SensoryQ/>}
+					{this.state.clickedCatName == "Sleep" && 
+						<SleepQ/>}
+					{this.state.clickedCatName == "Somatic" && 
+						<SomaticQ/>}
+					{this.state.clickedCatName == "Substance" && 
+						<SubstanceQ/>}
+					{this.state.clickedCatName == "Thought" && 
+						<ThoughtQ/>}
 				</div>
 			
 			</div>

@@ -8,17 +8,32 @@ class IconButton extends Component {
 		super(props);
 		this.state = {
 			clickedDomain: null
+			// color_black: true
 			// bgColor: '#82D8E5'
 		}
 		// console.log(this.props);
-		}
+	}
 
+	// changeColor = () => {
+	// 	this.setState({
+	// 		color_black: !this.state.color_black
+	// 	})
+	// }
 	myClick = () => {
 		// this.props.onButtonClick();
+		// this.changeColor();
 		this.props.sendDomain(this.props.name);
 	}
 
 	render() {
+		// let bgColor;
+		// if(this.state.color_black){
+		// 	bgColor = "#82D8E5"
+		// }
+		// else{
+		// 	bgColor = "white"
+		// }
+		//style={{backgroundColor: bgColor}} 
 		return (
 			<div>
 				<div>
