@@ -30,7 +30,6 @@ class BehaviorQ extends Component {
 	myRadio = (id, value) => {
   	if(id != null && value != null){
 			arr[id] = value; 
-
 			// element already in array
 			if(CATIDS.indexOf(id) != -1){
 				if(value == "No"){
@@ -44,11 +43,9 @@ class BehaviorQ extends Component {
 				}	
 			}
 
-			console.log(arr);
 			this.setState({ 
 				checkedIDs: CATIDS
 			});	
-			// console.log(arr);
 			this.setState({
 				radioIDs: arr
 			});
@@ -63,6 +60,7 @@ class BehaviorQ extends Component {
 
 	render() {
 		var radioSet = new Set(this.props.backRadio_ID);
+		
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">

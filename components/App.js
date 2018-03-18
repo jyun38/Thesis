@@ -9,13 +9,15 @@ import $ from 'jquery';
 
 var idData ='';
 var resultSet=[];
+var brain = new Set();
+var emotion = new Set();
 
 class App extends Component {
 	constructor(){
 		super();
     this.state = {
     	clickedDomain: null,
-    	receivedBrain: null,
+    	receivedQ_IDs: null,
     	result: null
     };
   }
@@ -57,7 +59,7 @@ class App extends Component {
  	ajaxPost = () =>{
  		console.log("Sending IDs...");
  		var all_ID = [];
- 		all_ID.push(this.state.receivedBrain);
+ 		all_ID.push(this.state.receivedQ_IDs);
  		console.log("PRINT " + all_ID);
  		if(all_ID != null){
  			$.ajax({
@@ -75,13 +77,30 @@ class App extends Component {
 	}
 
 	getQ_ID = (q_IDs) => {
+
 		if(q_IDs != null){
+			if(this.state.clickedDomain == "Brain"){
+				brain = new Set(q_IDs);
+				// urgh.push(q_IDs);
+			}
+			else if(this.state.clickedDomain == "Emotion"){
+				emotion = new Set(q_IDs);
+			}
+
+			var totalQ_IDs = new Set();
+			for(let elem of brain){
+				totalQ_IDs.add(elem);
+			}
+			for(let elem of emotion){
+				totalQ_IDs.add(elem);
+			}
+
 			this.setState({
-				receivedBrain: JSON.stringify(q_IDs)
-			// // AttentionQ_ID: JSON.stringify(q_ID)
+				receivedQ_IDs: JSON.stringify(Array.from(totalQ_IDs))
 			})
 		}
 	}
+
 
 	render() {
 		return (
@@ -94,11 +113,11 @@ class App extends Component {
 					<IconButton name = {"Actions"} sendDomain = {this.giveCat}/>
 				</div> 
 				<div>
-					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} sendBrain ={this.getQ_ID}/>}
-					{this.state.clickedDomain == "Emotion" && <CatList name = {"Emotion"}/>}
-					{this.state.clickedDomain == "Body" && <CatList name = {"Body"}/>}
-					{this.state.clickedDomain == "Social" && <CatList name = {"Social"}/>}															
-					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"}/>}
+					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} sendDomain ={this.getQ_ID}/>}
+					{this.state.clickedDomain == "Emotion" && <CatList name = {"Emotion"} sendDomain = {this.getQ_ID}/>}
+					{this.state.clickedDomain == "Body" && <CatList name = {"Body"} sendDomain = {this.getQ_ID}/>}
+					{this.state.clickedDomain == "Social" && <CatList name = {"Social"} sendDomain = {this.getQ_ID}/>}															
+					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"} sendDomain = {this.getQ_ID}/>}
 				</div>
 				<div>
 					<button onClick={this.ajaxPost}>

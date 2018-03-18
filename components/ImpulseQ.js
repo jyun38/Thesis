@@ -4,35 +4,75 @@ import Question from './Question.js'
 import Radio from './Radio.js'
 import $ from 'jquery'; 
 
+var CATIDS = [];
+var arr = {};
+
 class ImpulseQ extends Component {
   constructor(props) {
   	super(props);
   	this.state = {
-  		question1Choice : null
+  		checkedIDs: null,
+      radioIDs: null
   	}
   }
 
-	setQ1Answer = (e) => {
-		this.setState({
-			question1Choice: e.target.value
-		});
-	}
+  componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.myAnswer(),
+      0.001
+    );
+  }
 
- 	countAll = () => {
- 		console.log("question 1 : ", this.state.question1Choice);
- 	}
+  componentWillUnmount() { 
+    clearInterval(this.loadInterval); 
+  }
+
+  myRadio = (id, value) => {
+    if(id != null && value != null){
+      arr[id] = value; 
+
+      // element already in array
+      if(CATIDS.indexOf(id) != -1){
+        if(value == "No"){
+          CATIDS.splice(CATIDS.indexOf(id), 1);
+        }
+      }
+      // element not in array
+      else{
+        if(value != "No"){
+          CATIDS.push(id);
+        }  
+      }
+      this.setState({ 
+        checkedIDs: CATIDS
+      });  
+      this.setState({
+        radioIDs: arr
+      });
+    }
+  }
+
+  myAnswer = () => {
+    //send clicked Q_ID to App
+    this.props.sendQ_ID(this.state.checkedIDs);
+    this.props.sendRadio_ID(this.state.radioIDs);
+  }
 
   render = () => {
+    var radioSet = new Set(this.props.backRadio_ID);
+
   	return(
   		<div className = "questionsCon">
   			<div className = "questions">
   				Does the client encounter any difficulties with impulse control? (E.g. stealing and deception without 
   					obvious external rewards, harming others or oneself, binge eating, substance abuse)
-  				<Radio q_ID = {"q_62"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio q_ID = {"q_62"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio q_ID = {"q_62"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+  				<Radio q_ID = {"q_62"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
+            status = {radioSet.has("q_62-Yes")}/>
+	        <Radio q_ID = {"q_62"} txt = {"No"} name = "1" sendValue = {this.myRadio} 
+            status = {radioSet.has("q_62-No")}/> 
+	        <Radio q_ID = {"q_62"} txt = {"Not enough information"} name = "1" sendValue = {this.myRadio} 
+            status = {radioSet.has("q_62-Not enough information")}/>
   			</div>
-  			<button onClick={this.countAll}>{"Done"}</button>
   		</div>
   	)
   }
