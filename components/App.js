@@ -79,24 +79,10 @@ class App extends Component {
 	getQ_ID = (q_IDs) => {
 
 		if(q_IDs != null){
-			if(this.state.clickedDomain == "Brain"){
-				brain = new Set(q_IDs);
-				// urgh.push(q_IDs);
-			}
-			else if(this.state.clickedDomain == "Emotion"){
-				emotion = new Set(q_IDs);
-			}
-
-			var totalQ_IDs = new Set();
-			for(let elem of brain){
-				totalQ_IDs.add(elem);
-			}
-			for(let elem of emotion){
-				totalQ_IDs.add(elem);
-			}
+			// console.log(q_IDs);
 
 			this.setState({
-				receivedQ_IDs: JSON.stringify(Array.from(totalQ_IDs))
+				receivedQ_IDs: JSON.stringify(q_IDs)
 			})
 		}
 	}

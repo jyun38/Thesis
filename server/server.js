@@ -53,7 +53,6 @@ databaseQuery = (req, res) => {
 }
 
 router.post('/res2', (req,res) => {
-
 	databaseQuery(req, res);
 
 })

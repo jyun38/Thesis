@@ -33,6 +33,9 @@ var totalRadio = [];
 var adl = new Set();
 var adlRadio = new Set();
 
+var attachment = new Set();
+var attachmentRadio = new Set();
+
 var att = new Set();
 var attRadio = new Set();
 
@@ -48,6 +51,12 @@ var communicationRadio = new Set();
 var delhal = new Set();
 var delhalRadio = new Set();
 
+var detachment = new Set();
+var detachmentRadio = new Set();
+
+var feeling = new Set();
+var feelingRadio = new Set();
+
 var impulse = new Set();
 var impulseRadio = new Set();
 
@@ -56,6 +65,12 @@ var judgmentRadio = new Set();
 
 var orientation = new Set();
 var orientationRadio = new Set();
+
+var selfconcept = new Set();
+var selfconceptRadio = new Set();
+
+var selfharm = new Set();
+var selfharmRadio = new Set();
 
 var thought = new Set();
 var thoughtRadio = new Set();
@@ -95,10 +110,12 @@ class CatList extends Component {
 	// get clicked Q_ID
 	getmyQ_ID = (dataFromChild) => {
 		if(dataFromChild != null){
-			// console.log("getmyQ_ID: ", dataFromChild);
 
 			if(this.state.clickedCatName == "Activities of Daily Living"){
 				adl = new Set(dataFromChild);
+			}
+			else if(this.state.clickedCatName == "Attachment"){
+				attachment = new Set(dataFromChild);
 			}
 			else if(this.state.clickedCatName == "Attention"){
 				att = new Set(dataFromChild);
@@ -115,6 +132,12 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Delusion/Hallucination"){
 				delhal = new Set(dataFromChild);
 			}
+			else if(this.state.clickedCatName == "Detachment"){
+				detachment = new Set(dataFromChild);
+			}
+			else if(this.state.clickedCatName == "Feeling"){
+				feeling = new Set(dataFromChild);
+			}
 			else if(this.state.clickedCatName == "Impulse"){
 				impulse = new Set(dataFromChild);
 			}
@@ -124,6 +147,12 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Orientation"){
 				orientation = new Set(dataFromChild);
 			}
+			else if(this.state.clickedCatName == "Self-concept"){
+				selfconcept = new Set(dataFromChild);
+			}
+			else if(this.state.clickedCatName == "Self-harm"){
+				selfharm = new Set(dataFromChild);
+			}
 			else if(this.state.clickedCatName == "Thought"){
 				thought = new Set(dataFromChild);
 			}
@@ -132,7 +161,7 @@ class CatList extends Component {
 			brainArray.push(adl, att, behavior, cogdev, communication, delhal, impulse, judgment, orientation, thought);
 			
 			var emotionArray = [];
-			emotionArray.push(delhal);
+			emotionArray.push(attachment, delhal, detachment, feeling, selfconcept, selfharm);
 
 			var totalBrainQs = new Set();
 			for(var i=0; i<brainArray.length; i++){
@@ -163,6 +192,9 @@ class CatList extends Component {
 			if(this.state.clickedCatName == "Activities of Daily Living"){
 				adlRadio = data;
 			}
+			else if(this.state.clickedCatName == "Attachment"){
+				attachmentRadio = data;
+			}
 			else if(this.state.clickedCatName == "Attention"){
 				attRadio = data;
 			}
@@ -176,9 +208,13 @@ class CatList extends Component {
 				communicationRadio = data; 
 			}
 			else if(this.state.clickedCatName == "Delusion/Hallucination"){
-				// console.log("YES");
 				delhalRadio = data;
-				// console.log(delhalRadio);
+			}
+			else if(this.state.clickedCatName == "Detachment"){
+				detachmentRadio = data;
+			}
+			else if(this.state.clickedCatName == "Feeling"){
+				feelingRadio = data;
 			}
 			else if(this.state.clickedCatName == "Impulse"){
 				impulseRadio = data;
@@ -189,13 +225,20 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Orientation"){
 				orientationRadio = data;
 			}
+			else if(this.state.clickedCatName == "Self-concept"){
+				selfconceptRadio = data;
+			}
+			else if(this.state.clickedCatName == "Self-harm"){
+				selfharmRadio = data;
+			}
 			else if(this.state.clickedCatName == "Thought"){
 				thoughtRadio = data;
 			}
 
 			var myRadioArray = [];
-			myRadioArray.push(adlRadio, attRadio, behaviorRadio, cogdevRadio, communicationRadio, delhalRadio, 
-				impulseRadio, judgmentRadio, orientationRadio, thoughtRadio);
+			myRadioArray.push(adlRadio, attachmentRadio, attRadio, behaviorRadio, cogdevRadio, communicationRadio, 
+				delhalRadio, detachmentRadio, feelingRadio, impulseRadio, judgmentRadio, orientationRadio, selfconceptRadio,
+				selfharmRadio, thoughtRadio);
 
 			var totalRadioQs = new Set();
 			for(var i = 0; i<myRadioArray.length; i++){
@@ -218,32 +261,26 @@ class CatList extends Component {
 		}
 		else if(this.props.name == "Emotion"){
 			this.props.sendDomain(this.state.clickedEmotionIDs);
-
 		}
 	}
 
 	render() {
 		var categoriesList; 
 		// array containing all clicked adl IDs
-		var allAdl = Array.from(adl); 
-		// array containing all clicked adl radio IDs
-		// array containing all clicked attention IDs
+		var allAdl = Array.from(adl);
+		var allAttachment = Array.from(attachment); 
 		var allAtt = Array.from(att);
-		// array containing all clicked attention radio IDs
 		var allBehavior = Array.from(behavior);
-
 		var allCogdev = Array.from(cogdev);
-
 		var allCommunication = Array.from(communication);
-
 		var allDelhal = Array.from(delhal);
-
+		var allDetachment = Array.from(detachment);
+		var allFeeling = Array.from(feeling);
 		var allImpulse = Array.from(impulse);
-
 		var allJudgment = Array.from(judgment);
-
 		var allOrientation = Array.from(orientation);
-
+		var allSelfconcept = Array.from(selfconcept);
+		var allSelfharm = Array.from(selfharm);
 		var allThought = Array.from(thought);
 
 		if(this.props.name == "Brain"){
@@ -278,7 +315,8 @@ class CatList extends Component {
 						<AdlQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allAdl} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>} 
 					{this.state.clickedCatName == "Attachment" && 
-						<AttachmentQ/>}  
+						<AttachmentQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allAttachment} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}  
 					{this.state.clickedCatName == "Attention" && 
 						<AttentionQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allAtt} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
@@ -295,11 +333,13 @@ class CatList extends Component {
 						<DelHalQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allDelhal} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Detachment" && 
-						<DetachmentQ/>}
+						<DetachmentQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allDetachment} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Eating" && 
 						<EatingQ/>}
 					{this.state.clickedCatName == "Feeling" && 
-						<FeelingQ/>}
+						<FeelingQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allFeeling} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Inflicting Harm on Others" && 
 						<IhoQ/>}
 					{this.state.clickedCatName == "Impulse" && 
@@ -318,9 +358,11 @@ class CatList extends Component {
 					{this.state.clickedCatName == "Ritual" && 
 						<RitualQ/>}
 					{this.state.clickedCatName == "Self-concept" && 
-						<SelfConceptQ/>}
+						<SelfConceptQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allSelfconcept} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Self-harm" && 
-						<SelfHarmQ/>}
+						<SelfHarmQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allSelfharm} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Sensory" && 
 						<SensoryQ/>}
 					{this.state.clickedCatName == "Sleep" && 
