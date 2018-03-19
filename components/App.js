@@ -8,9 +8,12 @@ import ajax from 'jquery';
 import $ from 'jquery';
 
 var idData ='';
+var allIdSet = new Set();
 var resultSet=[];
-var brain = new Set();
-var emotion = new Set();
+var brainSet = new Set();
+var emotionSet = new Set();
+var bodySet = new Set();
+
 
 class App extends Component {
 	constructor(){
@@ -77,10 +80,7 @@ class App extends Component {
 	}
 
 	getQ_ID = (q_IDs) => {
-
 		if(q_IDs != null){
-			// console.log(q_IDs);
-
 			this.setState({
 				receivedQ_IDs: JSON.stringify(q_IDs)
 			})

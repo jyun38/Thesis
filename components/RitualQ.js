@@ -7,21 +7,10 @@ class RitualQ extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			question1Choice: null, 
-			question2Choice: null,
-			question3Choice: null,
-			question4Choice: null,
-			question5Choice: null,
-			question6Choice: null
+			
 		}
 	}
 
-	// setQ1Answer = (e) => {
-	// 	this.setState({
-	// 		question1Choice: e.target.value
-	// 	});
-	// }
-	
 	render = () => {
 		return(
 
@@ -67,7 +56,6 @@ class RitualQ extends Component {
 	        <Radio q_ID = {"q_76"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
 	        <Radio q_ID = {"q_76"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/>
 				</div>		
-				<button onClick={this.countAll}>{"Done"}</button>
 			</div>
 		)
 	}

@@ -54,6 +54,9 @@ var delhalRadio = new Set();
 var detachment = new Set();
 var detachmentRadio = new Set();
 
+var eating = new Set();
+var eatingRadio = new Set();
+
 var feeling = new Set();
 var feelingRadio = new Set();
 
@@ -62,6 +65,9 @@ var impulseRadio = new Set();
 
 var judgment = new Set();
 var judgmentRadio = new Set();
+
+var motor = new Set();
+var motorRadio = new Set();
 
 var orientation = new Set();
 var orientationRadio = new Set();
@@ -83,8 +89,10 @@ class CatList extends Component {
 		super(props);
 		this.state = {
 			clickedCatName: null,
-			clickedBrainIDs: null,
-			clickedEmotionIDs: null, 
+			allClickedIDs: null,
+			// clickedBrainIDs: null,
+			// clickedEmotionIDs: null, 
+			// clickedBodyIDs: null,
 			clickedRadioIDs: null
 		};
 	}
@@ -135,6 +143,9 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Detachment"){
 				detachment = new Set(dataFromChild);
 			}
+			else if(this.state.clickedCatName == "Eating"){
+				eating = new Set(dataFromChild);
+			}
 			else if(this.state.clickedCatName == "Feeling"){
 				feeling = new Set(dataFromChild);
 			}
@@ -143,6 +154,9 @@ class CatList extends Component {
 			}
 			else if(this.state.clickedCatName == "Judgment"){
 				judgment = new Set(dataFromChild);
+			}
+			else if(this.state.clickedCatName == "Motor"){
+				motor = new Set(dataFromChild);
 			}
 			else if(this.state.clickedCatName == "Orientation"){
 				orientation = new Set(dataFromChild);
@@ -161,32 +175,50 @@ class CatList extends Component {
 			brainArray.push(adl, att, behavior, cogdev, communication, delhal, impulse, judgment, orientation, thought);
 			
 			var emotionArray = [];
-			emotionArray.push(attachment, delhal, detachment, feeling, selfconcept, selfharm);
+			emotionArray.push(attachment, delhal, detachment, feeling, impulse, selfconcept, selfharm);
 
-			var totalBrainQs = new Set();
+			var bodyArray = [];
+			bodyArray.push(adl, eating, motor);
+			var total = new Set();
+			// var totalBrainQs = new Set();
 			for(var i=0; i<brainArray.length; i++){
 				for(let elem of brainArray[i]){
-					totalBrainQs.add(elem);
+					// totalBrainQs.add(elem);
+					total.add(elem);
 				}
 			}
 
-			var totalEmotionQs = new Set();
+			// var totalEmotionQs = new Set();
 			for(var i=0; i<emotionArray.length; i++){
 				for(let elem of emotionArray[i]){
-					totalEmotionQs.add(elem);
+					// totalEmotionQs.add(elem);
+					total.add(elem);
 				}
 			}
 
-			this.setState({ 
-				clickedBrainIDs: Array.from(totalBrainQs),
-				clickedEmotionIDs: Array.from(totalEmotionQs)
-			});
-		}
+			// var totalBodyQs = new Set();
+			for(var i=0; i<bodyArray.length; i++){
+				for(let elem of bodyArray[i]){
+					// totalBodyQs.add(elem);
+					total.add(elem);
+				}
+			}
+			// console.log(total);
+			// console.log("BRAIN: ", totalBrainQs);
+			// console.log("EMOTION: ", totalEmotionQs);
 
+			// this.setState({ 
+			// 	clickedBrainIDs: Array.from(totalBrainQs),
+			// 	clickedEmotionIDs: Array.from(totalEmotionQs),
+			// 	clickedBodyIDs: Array.from(totalBodyQs)
+			// });
+			this.setState({
+				allClickedIDs: Array.from(total)
+			})
+		}
 	}
 
 	radioIDs = (data) => {
-
 		if(data != null){
 			// console.log("radioIDs: ", data);
 			if(this.state.clickedCatName == "Activities of Daily Living"){
@@ -213,6 +245,9 @@ class CatList extends Component {
 			else if(this.state.clickedCatName == "Detachment"){
 				detachmentRadio = data;
 			}
+			else if(this.state.clickedCatName == "Eating"){
+				eatingRadio = data;
+			}
 			else if(this.state.clickedCatName == "Feeling"){
 				feelingRadio = data;
 			}
@@ -221,6 +256,9 @@ class CatList extends Component {
 			}
 			else if(this.state.clickedCatName == "Judgment"){
 				judgmentRadio = data;
+			}
+			else if(this.state.clickedCatName == "Motor"){
+				motorRadio = data;
 			}
 			else if(this.state.clickedCatName == "Orientation"){
 				orientationRadio = data;
@@ -237,8 +275,8 @@ class CatList extends Component {
 
 			var myRadioArray = [];
 			myRadioArray.push(adlRadio, attachmentRadio, attRadio, behaviorRadio, cogdevRadio, communicationRadio, 
-				delhalRadio, detachmentRadio, feelingRadio, impulseRadio, judgmentRadio, orientationRadio, selfconceptRadio,
-				selfharmRadio, thoughtRadio);
+				delhalRadio, detachmentRadio, eatingRadio, feelingRadio, impulseRadio, judgmentRadio, motorRadio, 
+				orientationRadio, selfconceptRadio, selfharmRadio, thoughtRadio);
 
 			var totalRadioQs = new Set();
 			for(var i = 0; i<myRadioArray.length; i++){
@@ -256,12 +294,16 @@ class CatList extends Component {
 	}
 	// pass clicked Q_ID to app
 	myFunc = () => {
-		if(this.props.name == "Brain"){
-			this.props.sendDomain(this.state.clickedBrainIDs);
-		}
-		else if(this.props.name == "Emotion"){
-			this.props.sendDomain(this.state.clickedEmotionIDs);
-		}
+		// if(this.props.name == "Brain"){
+		// 	this.props.sendDomain(this.state.clickedBrainIDs);
+		// }
+		// else if(this.props.name == "Emotion"){
+		// 	this.props.sendDomain(this.state.clickedEmotionIDs);
+		// }
+		// else if(this.props.name == "Body"){
+		// 	this.props.sendDomain(this.state.clickedBodyIDs);
+		// }
+		this.props.sendDomain(this.state.allClickedIDs);
 	}
 
 	render() {
@@ -275,9 +317,11 @@ class CatList extends Component {
 		var allCommunication = Array.from(communication);
 		var allDelhal = Array.from(delhal);
 		var allDetachment = Array.from(detachment);
+		var allEating = Array.from(eating);
 		var allFeeling = Array.from(feeling);
 		var allImpulse = Array.from(impulse);
 		var allJudgment = Array.from(judgment);
+		var allMotor = Array.from(motor);
 		var allOrientation = Array.from(orientation);
 		var allSelfconcept = Array.from(selfconcept);
 		var allSelfharm = Array.from(selfharm);
@@ -336,7 +380,8 @@ class CatList extends Component {
 						<DetachmentQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allDetachment} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Eating" && 
-						<EatingQ/>}
+						<EatingQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allEating} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Feeling" && 
 						<FeelingQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allFeeling} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
@@ -349,7 +394,8 @@ class CatList extends Component {
 						<JudgmentQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allJudgment} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Motor" && 
-						<MotorQ/>}
+						<MotorQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allMotor} sendRadio_ID = {this.radioIDs} 
+							backRadio_ID = {totalRadio}/>}
 					{this.state.clickedCatName == "Orientation" && 
 						<OrientationQ sendQ_ID = {this.getmyQ_ID} chosen_ID = {allOrientation} sendRadio_ID = {this.radioIDs} 
 							backRadio_ID = {totalRadio}/>}
