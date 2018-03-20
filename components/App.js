@@ -64,7 +64,7 @@ class App extends Component {
  		var all_ID = [];
  		all_ID.push(this.state.receivedQ_IDs);
  		console.log("PRINT " + all_ID);
- 		if(all_ID != null){
+ 		if(all_ID != null || all_ID.length == 0 ){
  			$.ajax({
 				url: '/res2',
 				type: 'POST',
@@ -86,7 +86,6 @@ class App extends Component {
 			})
 		}
 	}
-
 
 	render() {
 		return (

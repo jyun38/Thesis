@@ -1,31 +1,45 @@
 import React, { Component } from 'react'
 import '../main.css'
 import CatList from './CatList.js'
+import $ from 'jquery';
+
 
 class IconButton extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			clickedDomain: null
+			clickedDomain: null, 
+			onClicked: false
 			// color_black: true
 			// bgColor: '#82D8E5'
 		}
 		// console.log(this.props);
 	}
 
-	// changeColor = () => {
-	// 	this.setState({
-	// 		color_black: !this.state.color_black
-	// 	})
-	// }
 	myClick = () => {
 		// this.props.onButtonClick();
 		// this.changeColor();
+		this.setState({
+			onClicked: true
+		})
 		this.props.sendDomain(this.props.name);
 	}
 
 	render() {
+		var _style;
+		if(this.state.onClicked){
+			_style = {
+				color: "red"
+			}
+		}
+		else{
+			_style = {
+				color: "blue"
+			}
+		}
+
+
 		// let bgColor;
 		// if(this.state.color_black){
 		// 	bgColor = "#82D8E5"
@@ -34,10 +48,11 @@ class IconButton extends Component {
 		// 	bgColor = "white"
 		// }
 		//style={{backgroundColor: bgColor}} 
+
 		return (
 			<div>
 				<div>
-				 	<button className = "button" onClick={this.myClick}>
+				 	<button className = "button" style = {_style} onClick={this.myClick}>
 				 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					 	<img style = {{width:40, height: 40}} src={require(`../${this.props.name.toLowerCase()}.png`)}/>
 					 	<font size="+2">

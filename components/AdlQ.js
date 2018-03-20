@@ -60,7 +60,6 @@ class AdlQ extends Component {
 			this.setState({ 
 				checkedIDs: CATIDS
 			});	
-			// console.log(arr);
 			this.setState({
 				radioIDs: arr
 			});

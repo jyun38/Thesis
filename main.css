@@ -128,21 +128,10 @@ button:focus{
 
 .result{
   border: 1px solid black;
-  height: 580px;
+  height: 570px;
   width: 500px;
   overflow: auto;
   padding: 5px;
 }
 
-/*.something{
-  color:red;
-}
-
-.qbox{
-  visibility: hidden;
-}
-
-.qbox2{
-  visibility: visible;
-}*/
  

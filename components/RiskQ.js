@@ -3,45 +3,84 @@ import '../main.css'
 import Radio from './Radio.js'
 import $ from 'jquery'; 
 
+var CATIDS = [];
+var arr = {};
+
 class RiskQ extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			question1Choice: null, 
-			question2Choice: null
+			checkedIDs: null,
+			radioIDs: null
 		}
 	}
 
-	setQ1Answer = (e) => {
-		this.setState({
-			question1Choice: e.target.value
-		});
-	}
+	componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.myAnswer(),
+      0.001
+    );
+  }
 
-	setQ2Answer = (e) => {
-		this.setState({
-			question2Choice: e.target.value
-		});
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
+
+	myRadio = (id, value) => {
+  	if(id != null && value != null){
+			arr[id] = value; 
+			// element already in array
+			if(CATIDS.indexOf(id) != -1){
+				if(value == "No"){
+					CATIDS.splice(CATIDS.indexOf(id), 1);
+				}
+			}
+			// element not in array
+			else{
+				if(value != "No"){
+					CATIDS.push(id);
+				}	
+			}
+			this.setState({ 
+				checkedIDs: CATIDS
+			});	
+			this.setState({
+				radioIDs: arr
+			});
+		}
+  }
+
+  myAnswer = () => {
+		//send clicked Q_ID to App
+		this.props.sendQ_ID(this.state.checkedIDs);
+		this.props.sendRadio_ID(this.state.radioIDs);
 	}
 	
 	render = () => {
+		var radioSet = new Set(this.props.backRadio_ID);
+
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have any risky behavior? (E.g. gambling, foolish business investments, sexual indiscretions, extreme outdoor activities)
-					<Radio q_ID = {"q_69"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio q_ID = {"q_69"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio q_ID = {"q_69"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/>
+					<Radio q_ID = {"q_69"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_69-Yes")}/>
+	        <Radio q_ID = {"q_69"} txt = {"No"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_69-No")}/> 
+	        <Radio q_ID = {"q_69"} txt = {"Not enough information"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_69-Not enough information")}/>
 				</div>
 				<br/>
 				<div className = "questions">
 					Is the client highly conservative about taking risks? 
-					<Radio q_ID = {"q_70"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio q_ID = {"q_70"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio q_ID = {"q_70"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/>
+					<Radio q_ID = {"q_70"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_70-Yes")}/>
+	        <Radio q_ID = {"q_70"} txt = {"No"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_70-No")}/> 
+	        <Radio q_ID = {"q_70"} txt = {"Not enough information"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_70-Not enough information")}/>
 				</div>
-				<button onClick={this.countAll}>{"Done"}</button>
 			</div>
 		)
 	}

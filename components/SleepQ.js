@@ -3,134 +3,146 @@ import '../main.css'
 import Radio from './Radio.js'
 import $ from 'jquery'; 
 
+var CATIDS = [];
+var arr = {};
+
 class SleepQ extends Component {
 
 	constructor(props){
 		super(props);
 		this.state = {
-			question1Choice: null, 
-			question2Choice: null, 
-			question3Choice: null,
-			question4Choice: null,
-			question5Choice: null,
-			question6Choice: null,
-			question7Choice: null
+			checkedIDs: null,
+			radioIDs: null
 		}	
 	}
 
-	setQ1Answer = (e) => {
-		this.setState({
-			question1Choice: e.target.value
-		});
-	}
+componentDidMount() {
+    this.loadInterval = setInterval(
+      () => this.myAnswer(),
+      0.001
+    );
+  }
 
-	setQ2Answer = (e) => {
-		this.setState({
-			question2Choice: e.target.value
-		});
-	}
+  componentWillUnmount() { 
+  	clearInterval(this.loadInterval); 
+  }
 
-	setQ3Answer = (e) => {
-		this.setState({
-			question3Choice: e.target.value
-		});
-	}
+	myRadio = (id, value) => {
+  	if(id != null && value != null){
+			arr[id] = value; 
+			// element already in array
+			if(CATIDS.indexOf(id) != -1){
+				if(value == "No"){
+					CATIDS.splice(CATIDS.indexOf(id), 1);
+				}
+			}
+			// element not in array
+			else{
+				if(value != "No"){
+					CATIDS.push(id);
+				}	
+			}
 
-	setQ4Answer = (e) => {
-		this.setState({
-			question4Choice: e.target.value
-		});
-	}
+			this.setState({ 
+				checkedIDs: CATIDS
+			});	
+			this.setState({
+				radioIDs: arr
+			});
+		}
+  }
 
-	setQ5Answer = (e) => {
-		this.setState({
-			question5Choice: e.target.value
-		});
-	}
-
-	setQ6Answer = (e) => {
-		this.setState({
-			question6Choice: e.target.value
-		});
-	}
-
-	setQ7Answer = (e) => {
-		this.setState({
-			question7Choice: e.target.value
-		});
-	}
-
-	countAll = () => {
- 		console.log("question 1 : ", this.state.question1Choice);
- 		console.log("question 2 : ", this.state.question2Choice);
- 		console.log("question 3 : ", this.state.question3Choice);
-	 	console.log("question 4 : ", this.state.question4Choice);
- 		console.log("question 5 : ", this.state.question5Choice);
- 		console.log("question 6 : ", this.state.question6Choice); 
- 		console.log("question 7 : ", this.state.question7Choice); 		
- 	}
+  myAnswer = () => {
+		//send clicked Q_ID to App
+		this.props.sendQ_ID(this.state.checkedIDs);
+		this.props.sendRadio_ID(this.state.radioIDs);
+	}  
 
  	render() {
+ 		var radioSet = new Set(this.props.backRadio_ID);
+
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
 					Does the client have fatigue, drowsiness, or coma?
-					<Radio q_ID = {"q_85"} txt = {"Yes"} name = "1" onAnswer = {this.setQ1Answer}/>
-	        <Radio q_ID = {"q_85"} txt = {"No"} name = "1" onAnswer = {this.setQ1Answer}/> 
-	        <Radio q_ID = {"q_85"} txt = {"Not enough information"} name = "1" onAnswer = {this.setQ1Answer}/> 
+					<Radio q_ID = {"q_85"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_85-Yes")}/>
+	        <Radio q_ID = {"q_85"} txt = {"No"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_85-No")}/> 
+	        <Radio q_ID = {"q_85"} txt = {"Not enough information"} name = "1" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_85-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 	      	Does the client feel disturbed while sleeping? (E.g. awakening from sleep, snoring, breathing pauses during
 	      	 sleep, having nightmares)
-	      	<Radio q_ID = {"q_86"} txt = {"Yes"} name = "2" onAnswer = {this.setQ2Answer}/>
-	        <Radio q_ID = {"q_86"} txt = {"No"} name = "2" onAnswer = {this.setQ2Answer}/> 
-	        <Radio q_ID = {"q_86"} txt = {"Not enough information"} name = "2" onAnswer = {this.setQ2Answer}/> 
+	      	<Radio q_ID = {"q_86"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_86-Yes")}/>
+	        <Radio q_ID = {"q_86"} txt = {"No"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_86-No")}/> 
+	        <Radio q_ID = {"q_86"} txt = {"Not enough information"} name = "2" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_86-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client experience irrepressible need to sleep? (hypersomnia)
-		      <Radio q_ID = {"q_87"} txt = {"Yes"} name = "3" onAnswer = {this.setQ3Answer}/>
-		      <Radio q_ID = {"q_87"} txt = {"No"} name = "3" onAnswer = {this.setQ3Answer}/> 
-		      <Radio q_ID = {"q_87"} txt = {"Not enough information"} name = "3" onAnswer = {this.setQ3Answer}/> 
+		      <Radio q_ID = {"q_87"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_87-Yes")}/>
+		      <Radio q_ID = {"q_87"} txt = {"No"} name = "3" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_87-No")}/> 
+		      <Radio q_ID = {"q_87"} txt = {"Not enough information"} name = "3" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_87-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have trouble falling asleep? (E.g. insomnia, disturbing dreams)
-					<Radio q_ID = {"q_88"} txt = {"Yes"} name = "4" onAnswer = {this.setQ4Answer}/>
-		      <Radio q_ID = {"q_88"} txt = {"No"} name = "4" onAnswer = {this.setQ4Answer}/> 
-		      <Radio q_ID = {"q_88"} txt = {"Not enough information"} name = "4" onAnswer = {this.setQ4Answer}/> 
+					<Radio q_ID = {"q_88"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_88-Yes")}/>
+		      <Radio q_ID = {"q_88"} txt = {"No"} name = "4" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_88-No")}/> 
+		      <Radio q_ID = {"q_88"} txt = {"Not enough information"} name = "4" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_88-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have decreased need for sleep?
-					<Radio q_ID = {"q_89"} txt = {"Yes"} name = "5" onAnswer = {this.setQ5Answer}/>
-		      <Radio q_ID = {"q_89"} txt = {"No"} name = "5" onAnswer = {this.setQ5Answer}/> 
-		      <Radio q_ID = {"q_89"} txt = {"Not enough information"} name = "5" onAnswer = {this.setQ5Answer}/> 
+					<Radio q_ID = {"q_89"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_89-Yes")}/>
+		      <Radio q_ID = {"q_89"} txt = {"No"} name = "5" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_89-No")}/> 
+		      <Radio q_ID = {"q_89"} txt = {"Not enough information"} name = "5" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_89-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 		      Does the client sleepwalk or show any other complex motor or vocal behaviors while sleeping?
-		      <Radio q_ID = {"q_90"} txt = {"Yes"} name = "6" onAnswer = {this.setQ6Answer}/>
-		      <Radio q_ID = {"q_90"} txt = {"No"} name = "6" onAnswer = {this.setQ6Answer}/> 
-		      <Radio q_ID = {"q_90"} txt = {"Not enough information"} name = "6" onAnswer = {this.setQ6Answer}/> 
+		      <Radio q_ID = {"q_90"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_90-Yes")}/>
+		      <Radio q_ID = {"q_90"} txt = {"No"} name = "6" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_90-No")}/> 
+		      <Radio q_ID = {"q_90"} txt = {"Not enough information"} name = "6" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_90-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 	      	Does the client have abnormal intervals for REM (Rapid Eye Movement)?
-	      	<Radio q_ID = {"q_91"} txt = {"Yes"} name = "7" onAnswer = {this.setQ7Answer}/>
-		      <Radio q_ID = {"q_91"} txt = {"No"} name = "7" onAnswer = {this.setQ7Answer}/> 
-		      <Radio q_ID = {"q_91"} txt = {"Not enough information"} name = "7" onAnswer = {this.setQ7Answer}/> 
+	      	<Radio q_ID = {"q_91"} txt = {"Yes"} name = "7" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_91-Yes")}/>
+		      <Radio q_ID = {"q_91"} txt = {"No"} name = "7" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_91-No")}/> 
+		      <Radio q_ID = {"q_91"} txt = {"Not enough information"} name = "7" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_91-Not enough information")}/> 
 	      </div>
 	      <br/>
 	      <div className = "questions">
 					Does the client have distress or impairment in functioning? 
-	      	<Radio q_ID = {"q_92"} txt = {"Yes"} name = "8" onAnswer = {this.setQ8Answer}/>
-		      <Radio q_ID = {"q_92"} txt = {"No"} name = "8" onAnswer = {this.setQ8Answer}/> 
-		      <Radio q_ID = {"q_92"} txt = {"Not enough information"} name = "8" onAnswer = {this.setQ8Answer}/> 
+	      	<Radio q_ID = {"q_92"} txt = {"Yes"} name = "8" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_92-Yes")}/>
+		      <Radio q_ID = {"q_92"} txt = {"No"} name = "8" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_92-No")}/> 
+		      <Radio q_ID = {"q_92"} txt = {"Not enough information"} name = "8" sendValue = {this.myRadio}
+	        	status = {radioSet.has("q_92-Not enough information")}/> 
 	      </div>
-				<button onClick={this.countAll}>{"Done"}</button>
-
       </div>
 
 		)
