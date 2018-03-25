@@ -82,7 +82,9 @@ class SelfConceptQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					The client has encountered:
+					</div>
 					<Checkbox q_ID = {"q_77"} name = {"disruption of identity (E.g. two or more different personality states, unstable self-image)"}
 						callBackFromParent = {this.myCallBack} status = {idSet.has("q_77")}/>
 					<Checkbox q_ID = {"q_79"} name = {"establishment of self-image while socializing with others (E.g. need for excessive admiration, difficulties with expressing disagreement with others)"}
@@ -92,7 +94,9 @@ class SelfConceptQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client’s self-image heavily influenced by appearance, body shape, or weight?
+					</div>
 					<Radio q_ID = {"q_78"} txt = {"Yes"} name = "2" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_78-Yes")}/>
 	        <Radio q_ID = {"q_78"} txt = {"No"} name = "2" sendValue = {this.myRadio} 
@@ -102,7 +106,9 @@ class SelfConceptQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client excessively confident about oneself? (E.g. high self-esteem, arrogance, self-importance)
+					</div>
 					<Radio q_ID = {"q_80"} txt = {"Yes"} name = "3" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_80-Yes")}/>
 	        <Radio q_ID = {"q_80"} txt = {"No"} name = "3" sendValue = {this.myRadio} 
@@ -112,7 +118,9 @@ class SelfConceptQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
-					Does the client have an exaggerated expression or emotion?					
+					<div className = "questionText">
+					Does the client have an exaggerated expression or emotion?	
+					</div>				
 					<Radio q_ID = {"q_82"} txt = {"Yes"} name = "4" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_82-Yes")}/>
 	        <Radio q_ID = {"q_82"} txt = {"No"} name = "4" sendValue = {this.myRadio} 

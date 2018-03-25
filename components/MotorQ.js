@@ -54,7 +54,9 @@ class MotorQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					The client experiences: (choose more than one if necessary)
+					</div>
 					<Checkbox q_ID = {"q_65"} name = {"excessive movement (E.g. vocal tics, psychomotor agitation, periods of inexhaustibility)"}
 						callBackFromParent = {this.myCallBack} status = {idSet.has("q_65")}/>
 					<Checkbox q_ID = {"q_66"} name = {"lack of movement (E.g. psychomotor retardation, depressed reflexes, stupor)"}

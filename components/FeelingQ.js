@@ -81,7 +81,9 @@ class FeelingQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
-					Does the client show a pattern of irritable or angry mood?		      
+					<div className = "questionText">
+					Does the client show a pattern of irritable or angry mood?
+					</div>		      
 					<Radio q_ID = {"q_44"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_44-Yes")}/>
 		      <Radio q_ID = {"q_44"} txt = {"No"} name = "1" sendValue = {this.myRadio} 
@@ -91,7 +93,9 @@ class FeelingQ extends Component {
 	      </div>
 	      <br/>
 				<div className = "questions">
-					The client experiences feelings of: (choose more than one if necessary)<br/>
+					<div className = "questionText">
+					The client experiences feelings of: (choose more than one if necessary)
+					</div>
 					<Checkbox q_ID = {"q_45"}name = {"disinterest in activities or lack of empathy for others"}
 						callBackFromParent = {this.myCallBack} status = {idSet.has("q_45")}/>
 	        <Checkbox q_ID = {"q_46"} name = {"sadness, emptiness, distress, or hopelessness"}
@@ -105,7 +109,9 @@ class FeelingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 	      	Does the client experience mood instability? 
+	      	</div>
 	      	<Radio q_ID = {"q_50"} txt = {"Yes"} name = "3" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_50-Yes")}/>
 	        <Radio q_ID = {"q_50"} txt = {"No"} name = "3" sendValue = {this.myRadio} 
@@ -116,7 +122,9 @@ class FeelingQ extends Component {
 	      <br/>
 	      
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Is the client excessively self-conscious? (E.g. worthlessness, guilt, gender incongruence)
+					</div>
 					<Radio q_ID = {"q_51"} txt = {"Yes"} name = "4" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_51-Yes")}/>
 		      <Radio q_ID = {"q_51"} txt = {"No"} name = "4" sendValue = {this.myRadio} 
@@ -126,9 +134,11 @@ class FeelingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client experience distress regarding gender identity? (E.g. preference for cross-dressing, 
 						preference for activities stereotypically engaged by the other gender, desire to be treated as the other 
 						gender)
+					</div>
 					<Radio q_ID = {"q_52"} txt = {"Yes"} name = "5" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_52-Yes")}/>
 		      <Radio q_ID = {"q_52"} txt = {"No"} name = "5" sendValue = {this.myRadio} 
@@ -138,8 +148,10 @@ class FeelingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		     	Does the client have abnormal sexual desires? (E.g. sexual arousal from cross-dressing, humiliation, 
 		     		physical or psychological suffering of another person)
+		     	</div>
 		      <Radio q_ID = {"q_53"} txt = {"Yes"} name = "6" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_53-Yes")}/>
 		      <Radio q_ID = {"q_53"} txt = {"No"} name = "6" sendValue = {this.myRadio} 
@@ -147,9 +159,12 @@ class FeelingQ extends Component {
 		      <Radio q_ID = {"q_53"} txt = {"Not enough information"} name = "6" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_53-Not enough information")}/> 
 	      </div>
+	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client experience absent or reduced excitement, interest, or thoughts in regards to sexual 
 					activities?
+					</div>
 					<Radio q_ID = {"q_54"} txt = {"Yes"} name = "7" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_54-Yes")}/>
 	        <Radio q_ID = {"q_54"} txt = {"No"} name = "7" sendValue = {this.myRadio} 

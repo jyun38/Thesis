@@ -9,7 +9,6 @@ class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backgroundColor: '#C1ECF2'
     }
   }
 
@@ -19,9 +18,20 @@ class Category extends Component {
   }
 
   render() {  
+    var _style;
+    if(this.props.status == true){
+      _style = {
+        color: "grey"
+      }
+    }
+    else{
+      _style = {
+        color: "#2C4087"
+      }
+    }
     return (
       <div>
-        <button className = "catButton" onClick = {this.catClick}>
+        <button className = "catButton" style = {_style} onClick = {this.catClick}>
           {this.props.name}
         </button>
       </div>

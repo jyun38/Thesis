@@ -65,8 +65,10 @@ class JudgmentQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client encounter any difficulties in making decisions? (E.g. life decisions, decisions regarding 
 						well-being of self or others)
+					</div>
 					<Radio q_ID = {"q_63"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_63-Yes")}/>
 	        <Radio q_ID = {"q_63"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -76,8 +78,10 @@ class JudgmentQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client choose to oppose authorities or rules? (*Note: for children and adolescents, authorities can
 					 be adults)
+					</div>
 					<Radio q_ID = {"q_64"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_64-Yes")}/>
 	        <Radio q_ID = {"q_64"} txt = {"No"} name = "2" sendValue = {this.myRadio}

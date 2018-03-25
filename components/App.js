@@ -7,13 +7,10 @@ import AdlQ from './AdlQ.js'
 import ajax from 'jquery';
 import $ from 'jquery';
 
-var idData ='';
+var idData ="Please click the 'SUGGESTED SYMPTOMS' button for results."
 var allIdSet = new Set();
-var resultSet=[];
-var brainSet = new Set();
-var emotionSet = new Set();
-var bodySet = new Set();
-
+var resultArr = [];
+// var resultSet = new Set();
 
 class App extends Component {
 	constructor(){
@@ -23,7 +20,7 @@ class App extends Component {
     	receivedQ_IDs: null,
     	result: null
     };
-  }
+  } 
 
   extractData = () => { 
   	console.log("Getting data...");
@@ -36,17 +33,27 @@ class App extends Component {
 	 					if(value.table[0]!= null){
 	 						value.table[0] = JSON.parse(value.table[0])
 	 						// console.log(value.table[0]);
-	 						// idData = value.table[0];
-	 						
-	 						idData = value.table[0]
-	 						// console.log(idData);
-	 						// console.log(idData.length);
-	 						resultSet=[];
+	 						idData = value.table[0];
+	 						console.log("idData >>>");
+	 						console.log(idData);
+	 						resultArr=[];
+	 					 
 	 						for(var i=0; i<idData.length; i++){
-	 							resultSet.push(idData[i].symptom);
+	 							// resultArr.push(idData[i].code_ICD10);
+	 							resultArr.push(idData[i].selectedNum + " symptom(s) out of " + idData[i].totalNum + " : " + idData[i].accuracy + "%");
+	 							resultArr.push("Chapter : " + idData[i].chapter_name + " (" +  idData[i].chapter + ")");
+	 							resultArr.push(idData[i].dx_name + " (" + idData[i].code_ICD10 + ")");
+	 							resultArr.push("URL : " + idData[i].URL + "\n")
 	 						}
-	 						// resultSet.join("\r\n");
-	 						// resultSet.join('\r\n');
+	 						resultArr = resultArr.join(" \n ");
+	 					 
+	 						// resultSet = new Set();
+	 						// for(var i = 0; i<idData.length; i++){
+	 						// 	resultSet.add(idData[i]);
+	 						// }
+	 						// console.log("resultSet >>>");
+	 						// console.log(JSON.stringify(resultSet));
+
 	 						// console.log(typeof(resultSet));
 	 						// console.log(typeof(value));
 	 						// console.log(value);
@@ -55,21 +62,22 @@ class App extends Component {
 	 			})
 	 		})
 	 		this.setState({
-	 			result: JSON.stringify(idData)
+	 			result: resultArr
 	 		});
  }
 
  	ajaxPost = () =>{
  		console.log("Sending IDs...");
  		var all_ID = [];
- 		all_ID.push(this.state.receivedQ_IDs);
- 		console.log("PRINT " + all_ID);
- 		if(all_ID != null || all_ID.length == 0 ){
+ 		if(all_ID != null || all_ID.length != 0 ){
+	 		all_ID.push(this.state.receivedQ_IDs);
+	 		console.log("PRINT " + all_ID);
+ 		
  			$.ajax({
 				url: '/res2',
 				type: 'POST',
 				data: {id: all_ID}
-			});	
+			});
  		}
  	}
 
@@ -91,11 +99,11 @@ class App extends Component {
 		return (
 			<div>
 				<div className = "domainsCon">
-					<IconButton name = {"Brain"} sendDomain = {this.giveCat}/>
-					<IconButton name = {"Emotion"} sendDomain = {this.giveCat}/>
-					<IconButton name = {"Body"} sendDomain = {this.giveCat}/>
-					<IconButton name = {"Social"} sendDomain = {this.giveCat}/>
-					<IconButton name = {"Actions"} sendDomain = {this.giveCat}/>
+					<IconButton name = {"Brain"} sendDomain = {this.giveCat} status = {this.state.clickedDomain == "Brain"}/>
+					<IconButton name = {"Emotion"} sendDomain = {this.giveCat} status = {this.state.clickedDomain == "Emotion"}/>
+					<IconButton name = {"Body"} sendDomain = {this.giveCat} status = {this.state.clickedDomain == "Body"}/>
+					<IconButton name = {"Social"} sendDomain = {this.giveCat} status = {this.state.clickedDomain == "Social"}/>
+					<IconButton name = {"Actions"} sendDomain = {this.giveCat} status = {this.state.clickedDomain == "Actions"}/>
 				</div> 
 				<div>
 					{this.state.clickedDomain == "Brain" && <CatList name = {"Brain"} sendDomain ={this.getQ_ID}/>}
@@ -104,20 +112,21 @@ class App extends Component {
 					{this.state.clickedDomain == "Social" && <CatList name = {"Social"} sendDomain = {this.getQ_ID}/>}															
 					{this.state.clickedDomain == "Actions" && <CatList name = {"Actions"} sendDomain = {this.getQ_ID}/>}
 				</div>
-				<div>
+				<div className = "resultCont">
 					<button onClick={this.ajaxPost}>
-						FINALIZE ANSWERS
+						FINALIZE RESULTS
 					</button>
 					<button onClick={this.extractData}>
 						QUERY DATABASE
 					</button>
 					<button onClick={this.extractData}>
-						SHOW RESULT
+						GET DIAGNOSES
 					</button>
-
-				</div>
-				<div className="result">
+					
+					<div className="result">
 					{this.state.result}
+						
+					</div>
 				</div>
 			</div>
 		)

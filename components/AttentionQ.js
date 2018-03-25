@@ -67,7 +67,9 @@ class AttentionQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have any hyperactive-impulsive symptom?
+					</div>
 	        <Radio q_ID = {"q_15"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_15-Yes")}/>
 	        <Radio q_ID = {"q_15"} txt = {"No"} name = "1" sendValue = {this.myRadio} 

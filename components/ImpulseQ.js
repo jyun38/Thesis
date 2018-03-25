@@ -64,8 +64,10 @@ class ImpulseQ extends Component {
   	return(
   		<div className = "questionsCon">
   			<div className = "questions">
+          <div className = "questionText">
   				Does the client encounter any difficulties with impulse control? (E.g. stealing and deception without 
   					obvious external rewards, harming others or oneself, binge eating, substance abuse)
+          </div>
   				<Radio q_ID = {"q_62"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
             status = {radioSet.has("q_62-Yes")}/>
 	        <Radio q_ID = {"q_62"} txt = {"No"} name = "1" sendValue = {this.myRadio} 

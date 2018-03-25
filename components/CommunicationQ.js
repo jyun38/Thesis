@@ -46,7 +46,6 @@ class CommunicationQ extends Component {
 			this.setState({ 
 				checkedIDs: CATIDS
 			});	
-			// console.log(arr);
 			this.setState({
 				radioIDs: arr
 			});
@@ -63,7 +62,9 @@ class CommunicationQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the communicative deficits of the client affect his/her/their relationships?
+					</div>
 					<Radio q_ID = {"q_31"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_31-Yes")}/>
 	        <Radio q_ID = {"q_31"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -73,8 +74,10 @@ class CommunicationQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 	      	Does the client encounter any difficulties in adapting to rules for conversations? (E.g. storytelling, 
 	      		taking turns in conversations, communicating to match context)
+	      	</div>
 	      	<Radio q_ID = {"q_32"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_32-Yes")}/>
 	        <Radio q_ID = {"q_32"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -84,8 +87,10 @@ class CommunicationQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client encounter any difficulties in interacting with others? (E.g. greeting, sharing information, 
 		      	normal back-and-forth conversation)
+		      </div>
 		      <Radio q_ID = {"q_33"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_33-Yes")}/>
 		      <Radio q_ID = {"q_33"} txt = {"No"} name = "3" sendValue = {this.myRadio}
@@ -95,7 +100,9 @@ class CommunicationQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client face any limitation in comprehending speech or gesture?
+					</div>
 					<Radio q_ID = {"q_34"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_34-Yes")}/>
 		      <Radio q_ID = {"q_34"} txt = {"No"} name = "4" sendValue = {this.myRadio}
@@ -105,7 +112,9 @@ class CommunicationQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client encounter any difficulties in expressing his/her/their thoughts verbally?
+					</div>
 					<Radio q_ID = {"q_35"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_35-Yes")}/>
 		      <Radio q_ID = {"q_35"} txt = {"No"} name = "5" sendValue = {this.myRadio}

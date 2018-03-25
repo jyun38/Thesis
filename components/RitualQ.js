@@ -63,7 +63,9 @@ class RitualQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client preoccupied with details, rules, sameness, or routines?
+					</div>
 					<Radio q_ID = {"q_71"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_71-Yes")}/>
 	        <Radio q_ID = {"q_71"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -73,7 +75,9 @@ class RitualQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have increased goal-directed or compulsive behavior?
+					</div>
 					<Radio q_ID = {"q_72"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_72-Yes")}/>
 	        <Radio q_ID = {"q_72"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -83,7 +87,9 @@ class RitualQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client repetitively pull out hair or try to resist hair pulling?
+					</div>
 					<Radio q_ID = {"q_73"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_73-Yes")}/>
 	        <Radio q_ID = {"q_73"} txt = {"No"} name = "3" sendValue = {this.myRadio}
@@ -93,7 +99,9 @@ class RitualQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client repetitively pick skin or try to resist skin picking?
+					</div>
 					<Radio q_ID = {"q_74"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_74-Yes")}/>
 	        <Radio q_ID = {"q_74"} txt = {"No"} name = "4" sendValue = {this.myRadio}
@@ -103,7 +111,9 @@ class RitualQ extends Component {
 				</div>	
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client repetitively violate others’ rights or age-appropriate societal norms?
+					</div>
 					<Radio q_ID = {"q_75"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_75-Yes")}/>
 	        <Radio q_ID = {"q_75"} txt = {"No"} name = "5" sendValue = {this.myRadio}
@@ -113,7 +123,9 @@ class RitualQ extends Component {
 				</div>	
 				<br/>	
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client preoccupied with his/her/their health or show maladaptive avoidance?
+					</div>
 					<Radio q_ID = {"q_76"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_76-Yes")}/>
 	        <Radio q_ID = {"q_76"} txt = {"No"} name = "6" sendValue = {this.myRadio}

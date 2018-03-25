@@ -76,12 +76,13 @@ class AdlQ extends Component {
 		var idSet = new Set(this.props.chosen_ID);
 		// set of all radio IDs
 		var radioSet = new Set(this.props.backRadio_ID);
-		// console.log(mySet2);
 
 		return(
 			<div className = "questionsCon adlQ"> 
 				<div className = "questions"> 
-					Does the client use any mind-altering substances such as Cannabis, Hallucinogen, and Phencyclidine? <br/>
+				 	<div className = "questionText">
+					Does the client use any mind-altering substances such as Cannabis, Hallucinogen, and Phencyclidine? 
+					</div> 
 	        <Radio q_ID = {"q_1"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_1-Yes")}/>
 	        <Radio q_ID = {"q_1"} txt = {"No"} name = "1" sendValue = {this.myRadio} 
@@ -91,7 +92,9 @@ class AdlQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
-	      	The client encounters difficulties with: (choose more than one if necessary)<br/>
+	      	<div className = "questionText">
+	      	The client encounters difficulties with: (choose more than one if necessary) 
+	      	</div>
 	        <Checkbox q_ID = {"q_2"} name = {"personal care, such as eating, dressing, elimination, and hygiene"}
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_2")}/>
 	        <Checkbox q_ID = {"q_3"} name = {"making decisions"} 
@@ -106,7 +109,7 @@ class AdlQ extends Component {
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_7")}/>
 	        <Checkbox q_ID = {"q_8"} name = {"academic functioning, such as memory, reasoning, and comprehension"}
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_8")}/>
-	      </div>
+	      	</div>
       </div>
  		)
 	}

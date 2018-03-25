@@ -64,7 +64,9 @@ class ThoughtQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client encounter any difficulties in concentrating?
+					</div>
 	        <Radio q_ID = {"q_129"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_129-Yes")}/>
 	        <Radio q_ID = {"q_129"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -74,7 +76,9 @@ class ThoughtQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client demonstrate any signs of overthinking? (E.g. flight of ideas, over conscientiousness)
+	      	</div>
 	      	<Radio q_ID = {"q_130"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_130-Yes")}/>
 	        <Radio q_ID = {"q_130"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -84,8 +88,10 @@ class ThoughtQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client have any abnormal thoughts or perceptions about money?  (E.g. hoarding money for future 
 		      	catastrophes)
+		      </div>
 		      <Radio q_ID = {"q_131"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_131-Yes")}/>
 		      <Radio q_ID = {"q_131"} txt = {"No"} name = "3" sendValue = {this.myRadio}
@@ -95,8 +101,10 @@ class ThoughtQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client have too much negative thought compared to other people? (E.g.  holding negative beliefs, 
 						earing grudges persistently)
+					</div>
 					<Radio q_ID = {"q_132"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_132-Yes")}/>
 		      <Radio q_ID = {"q_132"} txt = {"No"} name = "4" sendValue = {this.myRadio}
@@ -106,8 +114,10 @@ class ThoughtQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Is the client preoccupied with concerns about physical health? (E.g. persistent thoughts about acquiring a
 					 serious illness, recurrent thoughts of death)
+					</div>
 					<Radio q_ID = {"q_133"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_133-Yes")}/>
 		      <Radio q_ID = {"q_133"} txt = {"No"} name = "5" sendValue = {this.myRadio}
@@ -117,8 +127,10 @@ class ThoughtQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client hold suspicious thoughts toward surroundings and other people? (E.g. doubts about the 
 						loyalty of friends, reads hidden demeaning meanings into benign remarks)
+					</div>
 		      <Radio q_ID = {"q_134"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_134-Yes")}/>
 		      <Radio q_ID = {"q_134"} txt = {"No"} name = "6" sendValue = {this.myRadio}
@@ -128,8 +140,10 @@ class ThoughtQ extends Component {
 		    </div>
 		    <br/>
 		    <div className = "questions">
+		    	<div className = "questionText">
 					Does the client encounter any difficulties in recalling or accepting the traumatic events occurred in the 
 					past? (E.g. inability to remember important aspect of the traumatic events, flashbacks)
+					</div>
 		      <Radio q_ID = {"q_135"} txt = {"Yes"} name = "7" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_135-Yes")}/>
 		      <Radio q_ID = {"q_135"} txt = {"No"} name = "7" sendValue = {this.myRadio}

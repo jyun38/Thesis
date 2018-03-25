@@ -63,7 +63,9 @@ class EatingQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have any binge eating symptoms?
+					</div>
 					<Radio q_ID = {"q_38"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_38-Yes")}/>
 	        <Radio q_ID = {"q_38"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -73,7 +75,9 @@ class EatingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client purge after eating?
+					</div>
 	      	<Radio q_ID = {"q_39"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_39-Yes")}/>
 	        <Radio q_ID = {"q_39"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -83,7 +87,9 @@ class EatingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client show decreased appetite?
+		      </div>
 		      <Radio q_ID = {"q_40"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_40-Yes")}/>
 		      <Radio q_ID = {"q_40"} txt = {"No"} name = "3" sendValue = {this.myRadio}
@@ -93,7 +99,9 @@ class EatingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client feel embarrassed by how much he/she/they is/are eating?
+					</div>
 					<Radio q_ID = {"q_41"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_41-Yes")}/>
 		      <Radio q_ID = {"q_41"} txt = {"No"} name = "4" sendValue = {this.myRadio}
@@ -103,8 +111,10 @@ class EatingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client have an abnormal diet structure? (E.g. heavily relying on supplements, eating inedible 
 						substances)
+					</div>
 					<Radio q_ID = {"q_42"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_42-Yes")}/>
 		      <Radio q_ID = {"q_42"} txt = {"No"} name = "5" sendValue = {this.myRadio}
@@ -114,7 +124,9 @@ class EatingQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client regurgitate while eating?
+		      </div>
 		      <Radio q_ID = {"q_43"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_43-Yes")}/>
 		      <Radio q_ID = {"q_43"} txt = {"No"} name = "6" sendValue = {this.myRadio}

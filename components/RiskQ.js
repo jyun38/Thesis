@@ -63,7 +63,9 @@ class RiskQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have any risky behavior? (E.g. gambling, foolish business investments, sexual indiscretions, extreme outdoor activities)
+					</div>
 					<Radio q_ID = {"q_69"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_69-Yes")}/>
 	        <Radio q_ID = {"q_69"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -73,7 +75,9 @@ class RiskQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
-					Is the client highly conservative about taking risks? 
+					<div className = "questionText">
+					Is the client highly conservative about taking risks?
+					</div> 
 					<Radio q_ID = {"q_70"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_70-Yes")}/>
 	        <Radio q_ID = {"q_70"} txt = {"No"} name = "2" sendValue = {this.myRadio}

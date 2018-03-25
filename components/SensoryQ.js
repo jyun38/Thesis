@@ -63,7 +63,9 @@ class SensoryQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client influenced by any sensory impairments?
+					</div>
 					<Radio q_ID = {"q_84"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_84-Yes")}/>
 	        <Radio q_ID = {"q_84"} txt = {"No"} name = "1" sendValue = {this.myRadio}

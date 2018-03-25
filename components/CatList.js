@@ -408,7 +408,7 @@ class CatList extends Component {
 			<div>
 				<div className = "categoriesCon">
 					{categoriesList.map((x, i) => 
-						<Category name = {x} key = {i} sendCat = {this.getCat}/>)	
+						<Category name = {x} key = {i} sendCat = {this.getCat} status = {this.state.clickedCatName == x} />)	
 					}
 				</div>
 	

@@ -64,7 +64,9 @@ class OrientationQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Is the client aware of time, place, and/or identity?
+					</div>
 					<Radio q_ID = {"q_68"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_68-Yes")}/>
 	        <Radio q_ID = {"q_68"} txt = {"No"} name = "1" sendValue = {this.myRadio}

@@ -35,8 +35,8 @@ class Checkbox extends Component {
       checkStatus = ""
     }
     return(
-      <div>
-        <input type="checkbox" id = {this.props.q_ID} value = {this.props.value} onChange = {this.checkFunc} 
+      <div className="optionLists" >
+        <input   type="checkbox" id = {this.props.q_ID} value = {this.props.value} onChange = {this.checkFunc} 
           checked = {checkStatus}/> 
         {this.props.name}
       </div>

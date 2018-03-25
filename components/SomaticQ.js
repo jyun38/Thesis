@@ -81,7 +81,9 @@ class SomaticQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					In which of the following body parts does the client have discomfort with? (choose more than one if necessary)
+	        </div>
 	        <Checkbox q_ID = {"q_93"} name = {"Body"} 
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_93")}/> 	        					
 					<Checkbox q_ID = {"q_94"} name = {"Head"}
@@ -107,7 +109,9 @@ class SomaticQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client have any impairments in cognitive mechanism that might be caused by brain injury?
+					</div>
 	      	<Radio q_ID = {"q_104"} txt = {"Yes"} name = "2" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_104-Yes")}/>
 	        <Radio q_ID = {"q_104"} txt = {"No"} name = "2" sendValue = {this.myRadio} 
@@ -117,7 +121,9 @@ class SomaticQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client experience significant weight changes? (E.g. weight loss caused by purging or restriction of energy intake)
+		      </div>
 		      <Radio q_ID = {"q_105"} txt = {"Yes"} name = "3" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_105-Yes")}/>
 		      <Radio q_ID = {"q_105"} txt = {"No"} name = "3" sendValue = {this.myRadio} 
@@ -127,7 +133,9 @@ class SomaticQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client have an abnormal appetite compared to others? (E.g. increased appetite, decreased appetite)
+					</div>
 					<Radio q_ID = {"q_106"} txt = {"Yes"} name = "4" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_106-Yes")}/>
 		      <Radio q_ID = {"q_106"} txt = {"No"} name = "4" sendValue = {this.myRadio} 
@@ -137,7 +145,9 @@ class SomaticQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client encounter any difficulties in sexual functioning? (E.g. difficulties in obtaining erection in sexual activity, delay in ejaculation, reduced intensity of orgasmic sensations)
+					</div>	
 					<Radio q_ID = {"q_107"} txt = {"Yes"} name = "5" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_107-Yes")}/>
 		      <Radio q_ID = {"q_107"} q_ID = {"q_107"} txt = {"No"} name = "5" sendValue = {this.myRadio} 
@@ -147,7 +157,9 @@ class SomaticQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Is the client’s social activities limited by any physical impairments?
+		      </div>
 		      <Radio q_ID = {"q_108"} txt = {"Yes"} name = "6" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_108-Yes")}/>
 		      <Radio q_ID = {"q_108"} txt = {"No"} name = "6" sendValue = {this.myRadio} 

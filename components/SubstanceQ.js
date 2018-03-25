@@ -81,7 +81,9 @@ class SubstanceQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Which of the following substances the client has taken? (choose more than one if necessary)
+					</div>
 					<Checkbox q_ID = {"q_109"} name = {"Cannabis"}
 						callBackFromParent = {this.myCallBack} status = {idSet.has("q_109")}/>
 					<Checkbox q_ID = {"q_110"} name = {"Phencyclidine"}
@@ -107,7 +109,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>   
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client demonstrate any signs of addiction to certain substances? ( E.g. strong desire to use the substance, diminished effect with continued use of same amount of the substance, unsuccessful efforts to control the substance use)
+					</div>
 					<Radio q_ID = {"q_120"} txt = {"Yes"} name = "2" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_120-Yes")}/>
 		      <Radio q_ID = {"q_120"} txt = {"No"} name = "2" sendValue = {this.myRadio} 
@@ -117,7 +121,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Has the client experienced any significant behavioral or psychological changes following the substance use? (E.g. impaired motor coordination, anxiety,euphoria, inappropriate sexual behavior)
+					</div>
 					<Radio q_ID = {"q_121"} txt = {"Yes"} name = "3" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_121-Yes")}/>
 		      <Radio q_ID = {"q_121"} txt = {"No"} name = "3" sendValue = {this.myRadio} 
@@ -127,7 +133,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Has the client experienced any anxiety or fear during or soon after substance intoxication or withdrawal? 
+					</div>
 					<Radio q_ID = {"q_122"} txt = {"Yes"} name = "4" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_122-Yes")}/>
 		      <Radio q_ID = {"q_122"} txt = {"No"} name = "4" sendValue = {this.myRadio} 
@@ -137,7 +145,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have any impairments or high potential of impairments in physical health due to the use of substance? 
+					</div>
 					<Radio q_ID = {"q_123"} txt = {"Yes"} name = "5" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_123-Yes")}/>
 		      <Radio q_ID = {"q_123"} txt = {"No"} name = "5" sendValue = {this.myRadio} 
@@ -147,7 +157,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client experience extreme intake of substance?
+					</div>
 					<Radio q_ID = {"q_124"} txt = {"Yes"} name = "6" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_124-Yes")}/>
 		      <Radio q_ID = {"q_124"} txt = {"No"} name = "6" sendValue = {this.myRadio} 
@@ -157,7 +169,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Has the client given up any social, occupational, or recreational activities due to the substance use?
+					</div>
 					<Radio q_ID = {"q_125"} txt = {"Yes"} name = "7" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_125-Yes")}/>
 		      <Radio q_ID = {"q_125"} txt = {"No"} name = "7" sendValue = {this.myRadio} 
@@ -167,7 +181,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client spend a great deal of time in the process of obtaining substance, using substance, or recovering from its effects? 
+					</div>
 					<Radio q_ID = {"q_126"} txt = {"Yes"} name = "8" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_126-Yes")}/>
 		      <Radio q_ID = {"q_126"} txt = {"No"} name = "8" sendValue = {this.myRadio} 
@@ -177,7 +193,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the substance use influence the client’s ability to fulfill his/her/their roles at work, school, or home?
+					</div>
 					<Radio q_ID = {"q_127"} txt = {"Yes"} name = "9" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_127-Yes")}/>
 		      <Radio q_ID = {"q_127"} txt = {"No"} name = "9" sendValue = {this.myRadio} 
@@ -187,7 +205,9 @@ class SubstanceQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
-					Does the client encounter any difficulties in the process of withdrawing from substance use?					
+					<div className = "questionText">
+					Does the client encounter any difficulties in the process of withdrawing from substance use?	
+					</div>				
 					<Radio q_ID = {"q_128"} txt = {"Yes"} name = "10" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_128-Yes")}/>
 		      <Radio q_ID = {"q_128"} txt = {"No"} name = "10" sendValue = {this.myRadio} 

@@ -81,7 +81,9 @@ class IhoQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					The client has behavior with intention to harm others such as:
+					</div>
 					<Checkbox q_ID = {"q_57"} name = {"deceiving others by lying or presenting oneself with false symptoms"}
 						callBackFromParent = {this.myCallBack} status = {idSet.has("q_57")}/>
 					<Checkbox q_ID = {"q_58"} name = {"violation of others’ rights (E.g. robbery, exploitation, disregard of others’ safety, observing an unsuspecting person who is naked)"}
@@ -93,7 +95,9 @@ class IhoQ extends Component {
 				</div>
 				<br/>
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client feel pleasure or fascination from setting fire?
+					</div>
 					<Radio q_ID = {"q_61"} txt = {"Yes"} name = "2" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_61-Yes")}/>
 	        <Radio q_ID = {"q_61"} txt = {"No"} name = "2" sendValue = {this.myRadio} 

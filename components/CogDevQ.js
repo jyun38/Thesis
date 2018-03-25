@@ -56,7 +56,9 @@ class CogDevQ extends Component {
 		return(
 			<div className = "questionsCon">
 	      <div className = "questions">
-					The client encounters difficulties with: (choose more than one if necessary)<br/>
+	      	<div className = "questionText">
+					The client encounters difficulties with: (choose more than one if necessary)
+					</div>
 	        <Checkbox q_ID = {"q_24"} name = {"speaking clearly (E.g. slurred speech, broken words, reduced vocabulary)"}
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_24")}/>
 	        <Checkbox q_ID = {"q_25"} name = {"understanding what other people say (E.g. understanding gestures, words, or grammar)"}

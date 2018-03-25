@@ -23,8 +23,8 @@ class Radio extends Component {
       checkStatus = ""
     }
     return(
-      <div>
-        <input type="radio" id = {this.props.q_ID} name = {this.props.name} value = {this.props.txt} 
+      <div className="optionLists">
+        <input  type="radio" id = {this.props.q_ID} name = {this.props.name} value = {this.props.txt} 
         onChange = {this.myFunc} checked = {checkStatus}/> 
         {this.props.txt} <br/>
       </div>

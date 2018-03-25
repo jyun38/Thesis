@@ -65,7 +65,9 @@ class DetachmentQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 	      	Does the client feel detached from the world? (Derealization)
+	      	</div>
 	      	<Radio q_ID = {"q_36"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_36-Yes")}/>
 	        <Radio q_ID = {"q_36"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -75,7 +77,9 @@ class DetachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client feel detached from oneself? (Depersonalization)
+		      </div>
 		      <Radio q_ID = {"q_37"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_37-Yes")}/>
 		      <Radio q_ID = {"q_37"} txt = {"No"} name = "3" sendValue = {this.myRadio}

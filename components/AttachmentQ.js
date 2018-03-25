@@ -63,8 +63,10 @@ class AttachmentQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client use any mind-altering substances such as inhalant substance, Phencyclidine, Cannabis, 
 					sedative substance, sedative, hypnotic, and anxiolytic?
+					</div>
 					<Radio q_ID = {"q_9"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_9-Yes")}/>
 	        <Radio q_ID = {"q_9"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -74,7 +76,9 @@ class AttachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 	      	Does the client have significant absence of relationships with others?
+	      	</div>
 	      	<Radio q_ID = {"q_10"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_10-Yes")}/>
 	        <Radio q_ID = {"q_10"} txt = {"No"} name = "2" sendValue = {this.myRadio}
@@ -84,7 +88,9 @@ class AttachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Is the client often suspicious about others in relationships? (E.g. disloyalty, abandonment, deception)
+		      </div>
 		      <Radio q_ID = {"q_11"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_11-Yes")}/>
 		      <Radio q_ID = {"q_11"} txt = {"No"} name = "3" sendValue = {this.myRadio}
@@ -94,7 +100,9 @@ class AttachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Is the client afraid of relationships? (E.g. separation, shame, abandonment)
+					</div>
 					<Radio q_ID = {"q_12"} txt = {"Yes"} name = "4" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_12-Yes")}/>
 		      <Radio q_ID = {"q_12"} txt = {"No"} name = "4" sendValue = {this.myRadio}
@@ -104,8 +112,10 @@ class AttachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 					Does the client act inappropriately while interacting with others? (E.g. excessive attention seeking, 
 						preoccupation with details, need for admiration)
+					</div>
 					<Radio q_ID = {"q_13"} txt = {"Yes"} name = "5" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_13-Yes")}/>
 		      <Radio q_ID = {"q_13"} txt = {"No"} name = "5" sendValue = {this.myRadio}
@@ -115,8 +125,10 @@ class AttachmentQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 		      Does the client encounter any difficulties with socializing with others? (E.g. understanding and expressing
 		       gestural and emotional cues, communicating with others)
+		      </div>
 		      <Radio q_ID = {"q_14"} txt = {"Yes"} name = "6" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_14-Yes")}/>
 		      <Radio q_ID = {"q_14"} txt = {"No"} name = "6" sendValue = {this.myRadio}

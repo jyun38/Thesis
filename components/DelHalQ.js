@@ -64,8 +64,10 @@ class DelHalQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client experience hallucinations, such as witnessing events occurred to others and experiencing 
 					auditory illusions?
+					</div>
 					<Radio q_ID = {"q_55"} txt = {"Yes"} name = "1" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_55-Yes")}/>
 	        <Radio q_ID = {"q_55"} txt = {"No"} name = "1" sendValue = {this.myRadio}
@@ -75,7 +77,9 @@ class DelHalQ extends Component {
 	      </div>
 	      <br/>
 	      <div className = "questions">
+	      	<div className = "questionText">
 	      	Does the client experience delusions, such as preoccupation with fantasies of unlimited success?
+	      	</div>
 	      	<Radio q_ID = {"q_56"} txt = {"Yes"} name = "2" sendValue = {this.myRadio}
 	        	status = {radioSet.has("q_56-Yes")}/>
 	        <Radio q_ID = {"q_56"} txt = {"No"} name = "2" sendValue = {this.myRadio}

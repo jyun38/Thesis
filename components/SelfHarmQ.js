@@ -76,7 +76,9 @@ class SelfHarmQ extends Component {
 		return(
 			<div className = "questionsCon">
 				<div className = "questions">
+					<div className = "questionText">
 					Does the client have any behaviors that cause self-injury?
+					</div>
 					<Radio q_ID = {"q_83"} txt = {"Yes"} name = "1" sendValue = {this.myRadio} 
 	        	status = {radioSet.has("q_83-Yes")}/>
 	        <Radio q_ID = {"q_83"} txt = {"No"} name = "1" sendValue = {this.myRadio} 
