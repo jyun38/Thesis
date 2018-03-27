@@ -37,7 +37,7 @@ class App extends Component {
 	 						console.log("idData >>>");
 	 						console.log(idData);
 	 						resultArr=[];
-	 					 
+	 					 	resultArr.push(idData.length.toString() + " possible diagnoses: " + "\n");
 	 						for(var i=0; i<idData.length; i++){
 	 							// resultArr.push(idData[i].code_ICD10);
 	 							resultArr.push(idData[i].selectedNum + " symptom(s) out of " + idData[i].totalNum + " : " + idData[i].accuracy + "%");

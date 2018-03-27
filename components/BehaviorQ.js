@@ -162,6 +162,18 @@ class BehaviorQ extends Component {
 		      <Radio q_ID = {"q_23"} txt = {"Not enough information"} name = "8" sendValue = {this.myRadio}
 		      	status = {radioSet.has("q_23-Not enough information")}/> 
 		    </div>
+		    <br/>
+		    <div className = "questions">
+		    	<div className = "questionText">
+					Does the client have difficulty throwing away possessions?
+					</div>
+		      <Radio q_ID = {"q_136"} txt = {"Yes"} name = "9" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_136-Yes")}/>
+		      <Radio q_ID = {"q_136"} txt = {"No"} name = "9" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_136-No")}/> 
+		      <Radio q_ID = {"q_136"} txt = {"Not enough information"} name = "9" sendValue = {this.myRadio}
+		      	status = {radioSet.has("q_136-Not enough information")}/> 
+		    </div>
       </div>
 		)
 	}
