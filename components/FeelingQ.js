@@ -104,7 +104,7 @@ class FeelingQ extends Component {
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_47")}/>
 	        <Checkbox q_ID = {"q_48"} name = {"fear"}
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_48")}/>
-	        <Checkbox q_ID = {"q_49"}name = {"nervousness, anxiety, stress, or frustration?"}
+	        <Checkbox q_ID = {"q_49"}name = {"nervousness, anxiety, stress, or frustration"}
 	        	callBackFromParent = {this.myCallBack} status = {idSet.has("q_49")}/>
 	      </div>
 	      <br/>

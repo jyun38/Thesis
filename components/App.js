@@ -8,6 +8,7 @@ import ajax from 'jquery';
 import $ from 'jquery';
 
 var idData ="Please click the 'SUGGESTED SYMPTOMS' button for results."
+var criteria = [];
 var allIdSet = new Set();
 var resultArr = [];
 // var resultSet = new Set();
@@ -38,25 +39,25 @@ class App extends Component {
 	 						console.log(idData);
 	 						resultArr=[];
 	 					 	resultArr.push(idData.length.toString() + " possible diagnoses: " + "\n");
+	 					 	// console.log(idData.length);
 	 						for(var i=0; i<idData.length; i++){
 	 							// resultArr.push(idData[i].code_ICD10);
-	 							resultArr.push(idData[i].selectedNum + " symptom(s) out of " + idData[i].totalNum + " : " + idData[i].accuracy + "%");
-	 							resultArr.push("Chapter : " + idData[i].chapter_name + " (" +  idData[i].chapter + ")");
 	 							resultArr.push(idData[i].dx_name + " (" + idData[i].code_ICD10 + ")");
-	 							resultArr.push("URL : " + idData[i].URL + "\n")
+	 							resultArr.push("Chapter : " + idData[i].chapter_name + " (" +  idData[i].chapter + ")");
+	 							// resultArr.push("URL : " + idData[i].URL);
+
+	 							resultArr.push(idData[i].selectedNum + " symptom(s) out of " + idData[i].totalNum + " : " + idData[i].accuracy + "%");
+
+	 							var criteriaData = idData[i].criteria.split("|"); 
+	 							var criteriaResData = idData[i].criteriaRes.split("|"); 
+
+	 							for(var x = 0 ; x < criteriaData.length; x++){
+	 								var numFront = x+1; 
+	 								resultArr.push(numFront.toString() + ". " + criteriaData[x] + " (" + criteriaResData[x] + ")");
+	 							} 
+	 							resultArr.push("\n");
 	 						}
 	 						resultArr = resultArr.join(" \n ");
-	 					 
-	 						// resultSet = new Set();
-	 						// for(var i = 0; i<idData.length; i++){
-	 						// 	resultSet.add(idData[i]);
-	 						// }
-	 						// console.log("resultSet >>>");
-	 						// console.log(JSON.stringify(resultSet));
-
-	 						// console.log(typeof(resultSet));
-	 						// console.log(typeof(value));
-	 						// console.log(value);
 	 					}
 	 				}
 	 			})
