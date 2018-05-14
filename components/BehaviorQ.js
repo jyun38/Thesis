@@ -90,8 +90,7 @@ class BehaviorQ extends Component {
 	      <br/>
 	      <div className = "questions">
 	      	<div className = "questionText">
-		      Does the client behave differently compared to others? (E.g. acting solitarily, passaging feces into 
-		      	inappropriate places)
+		      Does the client behave differently compared to others? (E.g. acting solitarily)
 		      </div>
 		      <Radio q_ID = {"q_18"} txt = {"Yes"} name = "3" sendValue = {this.myRadio}
 		      	status = {radioSet.has("q_18-Yes")}/>
